@@ -15,9 +15,9 @@ warnings.filterwarnings("ignore")
 def make_figure_two(figure_path, sim_path):
     mpl.rcParams['font.family'] = 'Helvetica'
     csfont = {'fontname': 'Helvetica'}
-    letter_fontsize = 23
-    label_fontsize = 15
-    fig = plt.figure(figsize=(16, 14))
+    letter_fontsize = 21
+    label_fontsize = 13
+    fig = plt.figure(figsize=(14, 9))
     ax1 = plt.subplot2grid((2, 34), (0, 0), rowspan=1, colspan=16)
     ax2 = plt.subplot2grid((2, 34), (0, 18), rowspan=1, colspan=16)
     ax3 = plt.subplot2grid((2, 34), (1, 0), rowspan=1, colspan=16)
@@ -49,7 +49,7 @@ def make_figure_two(figure_path, sim_path):
         incrementer = del_list[i]  # equiv to 'del' in R, reserved in py
         pv0 = sorted(i for i in pv if (i + incrementer) < 1)
         p1 = pv0 + incrementer
-        y = (pv0, p1)
+        y = get_ew(pv0, p1)
         points = np.array([pv0, y]).T.reshape(-1, 1, 2)
         segments = np.concatenate([points[:-1], points[1:]], axis=1)
         lc = LineCollection(segments, cmap='coolwarm', norm=norm)
@@ -163,6 +163,6 @@ def make_figure_two(figure_path, sim_path):
     leg = ax4.legend(handles=legend_elements, loc='lower right', frameon=True,
                      fontsize=label_fontsize, framealpha=1, facecolor='w', edgecolor='k', handletextpad=0.1,
                      ncol=1, handlelength=0.75)
-    leg.set_title(title='$\omega$', prop={'size': 17})
+    leg.set_title(title='$\omega$', prop={'size': label_fontsize})
     plt.subplots_adjust(wspace=2.5, hspace=0.25)
     plt.savefig(os.path.join(figure_path, 'figure_2.pdf'), bbox_inches='tight')
