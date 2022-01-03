@@ -15,9 +15,9 @@ warnings.filterwarnings("ignore")
 def make_figure_two(figure_path, sim_path):
     mpl.rcParams['font.family'] = 'Helvetica'
     csfont = {'fontname': 'Helvetica'}
-    letter_fontsize = 23
+    letter_fontsize = 21
     label_fontsize = 15
-    fig = plt.figure(figsize=(16, 14))
+    fig = plt.figure(figsize=(14, 12))
     ax1 = plt.subplot2grid((2, 34), (0, 0), rowspan=1, colspan=16)
     ax2 = plt.subplot2grid((2, 34), (0, 18), rowspan=1, colspan=16)
     ax3 = plt.subplot2grid((2, 34), (1, 0), rowspan=1, colspan=16)
@@ -35,8 +35,8 @@ def make_figure_two(figure_path, sim_path):
 
     ax1.set_ylabel(r'w', fontsize=label_fontsize, **csfont);
     ax1.set_xlabel(r'A', fontsize=label_fontsize, **csfont);
-    ax1.xaxis.grid(linestyle='--', alpha=0.2)
-    ax1.yaxis.grid(linestyle='--', alpha=0.2)
+    ax1.xaxis.grid(linestyle='--', alpha=0.25)
+    ax1.yaxis.grid(linestyle='--', alpha=0.25)
     ax1.set_title(r'A.', fontsize=letter_fontsize, loc='left', y=1.025, x=-.05, **csfont)
     ax1.set_ylim(ax1.get_ylim()[0], 1)
     ax1.tick_params(axis='y', labelsize=13)
@@ -49,7 +49,7 @@ def make_figure_two(figure_path, sim_path):
         incrementer = del_list[i]  # equiv to 'del' in R, reserved in py
         pv0 = sorted(i for i in pv if (i + incrementer) < 1)
         p1 = pv0 + incrementer
-        y = (pv0, p1)
+        y = get_ew(pv0, p1)
         points = np.array([pv0, y]).T.reshape(-1, 1, 2)
         segments = np.concatenate([points[:-1], points[1:]], axis=1)
         lc = LineCollection(segments, cmap='coolwarm', norm=norm)
@@ -71,11 +71,11 @@ def make_figure_two(figure_path, sim_path):
 
     ax2.set_ylabel(r'Values of E(W) and Z(W)', fontsize=label_fontsize, **csfont);
     ax2.set_xlabel(r'w$_0$', fontsize=label_fontsize, **csfont);
-    ax2.set_ylim(-.025, 0.5)
+    ax2.set_ylim(0, 0.5)
     ax2.set_xlim(0.475, 1)
     ax2.set_title(r'B.', fontsize=letter_fontsize, loc='left', y=1.025, x=-.05, **csfont)
-    ax2.xaxis.grid(linestyle='--', alpha=0.2)
-    ax2.yaxis.grid(linestyle='--', alpha=0.2)
+    ax2.xaxis.grid(linestyle='--', alpha=0.25)
+    ax2.yaxis.grid(linestyle='--', alpha=0.25)
     ax2.tick_params(axis='y', labelsize=13)
     ax2.tick_params(axis='x', labelsize=13)
     legend_elements = [Line2D([0], [0], color='#00846b', lw=1, linestyle='-',
@@ -104,15 +104,14 @@ def make_figure_two(figure_path, sim_path):
 
     ax3.tick_params(axis='y', labelsize=13)
     ax3.tick_params(axis='x', labelsize=13)
-    ax3.xaxis.grid(linestyle='--', alpha=0.3)
-    ax3.yaxis.grid(linestyle='--', alpha=0.3)
+    ax3.xaxis.grid(linestyle='--', alpha=0.25)
+    ax3.yaxis.grid(linestyle='--', alpha=0.25)
 
-    ax1.xaxis.grid(linestyle='--', alpha=0.3)
-    ax1.yaxis.grid(linestyle='--', alpha=0.3)
+    ax1.xaxis.grid(linestyle='--', alpha=0.25)
+    ax1.yaxis.grid(linestyle='--', alpha=0.25)
 
-    ax2.xaxis.grid(linestyle='--', alpha=0.3)
-    ax2.yaxis.grid(linestyle='--', alpha=0.3)
-    sns.despine()
+    ax2.xaxis.grid(linestyle='--', alpha=0.25)
+    ax2.yaxis.grid(linestyle='--', alpha=0.25)
     ax3.set_title(r'C.', fontsize=letter_fontsize, loc='left', y=1.025, x=-.05, **csfont)
 
     # d
@@ -156,13 +155,14 @@ def make_figure_two(figure_path, sim_path):
     ax4.set_title(r'D.', fontsize=letter_fontsize, loc='left', y=1.025, x=-.05, **csfont)
     ax4.tick_params(axis='y', labelsize=13)
     ax4.tick_params(axis='x', labelsize=13)
-    sns.despine()
     ax4.set_xlim(0, 5)
-    ax4.xaxis.grid(linestyle='--', alpha=0.2)
-    ax4.yaxis.grid(linestyle='--', alpha=0.2)
+    ax4.set_ylim(-.025, 0.6)
+    ax4.xaxis.grid(linestyle='--', alpha=0.25)
+    ax4.yaxis.grid(linestyle='--', alpha=0.25)
     leg = ax4.legend(handles=legend_elements, loc='lower right', frameon=True,
                      fontsize=label_fontsize, framealpha=1, facecolor='w', edgecolor='k', handletextpad=0.1,
                      ncol=1, handlelength=0.75)
-    leg.set_title(title='$\omega$', prop={'size': 17})
+    leg.set_title(title='$\omega$', prop={'size': label_fontsize})
     plt.subplots_adjust(wspace=2.5, hspace=0.25)
+    #sns.despine()
     plt.savefig(os.path.join(figure_path, 'figure_2.pdf'), bbox_inches='tight')

@@ -6,18 +6,18 @@ import os
 from sklearn.preprocessing import StandardScaler
 nrmlzd = StandardScaler()
 
-def make_figure_five(figure_path):
+def make_figure_five(figure_path, data_path):
     mpl.rcParams['font.family'] = 'Helvetica'
     csfont = {'fontname': 'Helvetica'}
-    letter_fontsize = 25
-    label_fontsize = 16
-    data_dir = os.path.join(os.getcwd(), 'data', 'HRS')
+    letter_fontsize = 24
+    label_fontsize = 15
+    data_dir = os.path.join(data_path, 'HRS')
     out1a = pd.read_csv(os.path.join(data_dir, 'out1a.csv'))
     out1b = pd.read_csv(os.path.join(data_dir, 'out1b.csv'))
     out1c = pd.read_csv(os.path.join(data_dir, 'out1c.csv'))
     out2c = pd.read_csv(os.path.join(data_dir, 'out2c.csv'))
 
-    fig = plt.figure(figsize=(16, 12))
+    fig = plt.figure(figsize=(14.4, 12))
     ax1 = plt.subplot2grid((2, 2), (0, 0), rowspan=1, colspan=1)
     ax2 = plt.subplot2grid((2, 2), (0, 1), rowspan=1, colspan=1)
     ax3 = plt.subplot2grid((2, 2), (1, 0), rowspan=1, colspan=1)
@@ -60,7 +60,7 @@ def make_figure_five(figure_path):
                                                              linewidth=1.25, alpha=0.9,
                                                              label=col)
         iterator = iterator + 1
-    sns.despine()
+    #sns.despine()
     ax1.set_title(r'A.', fontsize=letter_fontsize, loc='left', x=-.05, **csfont, y=1.025)
     ax2.set_title(r'B.', fontsize=letter_fontsize, loc='left', x=-.05, **csfont, y=1.025)
     ax3.set_title(r'C.', fontsize=letter_fontsize, loc='left', x=-.05, **csfont, y=1.025)
@@ -90,46 +90,54 @@ def make_figure_five(figure_path):
     ax3.tick_params(axis='both', which='major', labelsize=13)
     ax4.tick_params(axis='both', which='major', labelsize=13)
 
-    ax2.legend(frameon=True, ncol=1,
-               fontsize=label_fontsize-2, framealpha=1, facecolor='w',
-               edgecolor='w', handletextpad=0.25,
-               bbox_to_anchor=(1.05, 1), loc='upper left')
-    ax4.legend(frameon=True, ncol=1,
-               fontsize=label_fontsize-2, framealpha=1, facecolor='w',
-               edgecolor='w', handletextpad=0.25,
-               bbox_to_anchor=(1.05, 1), loc='upper left')
+    ax2.legend(frameon=True, ncol=5,
+               fontsize=label_fontsize-4.5, framealpha=1, facecolor='w',
+               edgecolor='k', handletextpad=0.25,
+               # bbox_to_anchor=(1.05, 1),
+               loc='upper center')
+    ax3.legend(frameon=True, ncol=5,
+               fontsize=label_fontsize-4.5, framealpha=1, facecolor='w',
+               edgecolor='k', handletextpad=0.25,
+               # bbox_to_anchor=(1.05, 1),
+               loc='upper center')
 
-    ax1.annotate(r'Baccarat',
+    ax4.legend(frameon=True, ncol=5,
+               fontsize=label_fontsize-4.5, framealpha=1, facecolor='w',
+               edgecolor='k', handletextpad=0.25,
+               # bbox_to_anchor=(1.05, 1),
+               loc='upper center')
+
+    ax1.annotate(r'Baccarat (0.048)',
                  xy=(70, 0.05), xycoords='data', **csfont,
                  xytext=(76, 0.0675), fontsize=14, textcoords='data',
                  arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=0.25", linewidth=0.5,
                                  edgecolor='k', linestyle='-'))
 
-    ax2.annotate(r'Blackjack',
+    ax2.annotate(r'Blackjack (0.01)',
                  xy=(70, 0.0099), xycoords='data', **csfont,
                  xytext=(76, 0.025), fontsize=14, textcoords='data',
                  arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=0.25", linewidth=0.5,
                                  edgecolor='k'))
 
-    ax2.annotate(r'Baccarat',
+    ax2.annotate(r'Baccarat (0.048)',
                  xy=(70, 0.05), xycoords='data', **csfont,
                  xytext=(76, 0.0675), fontsize=14, textcoords='data',
                  arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=0.25", linewidth=0.5,
                                  edgecolor='k', linestyle='-'))
 
-    ax3.annotate(r'Blackjack',
+    ax3.annotate(r'Blackjack (0.01)',
                  xy=(70, 0.0099), xycoords='data', **csfont,
-                 xytext=(76, 0.0165), fontsize=14, textcoords='data',
+                 xytext=(76, 0.025), fontsize=14, textcoords='data',
                  arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=0.25", linewidth=0.5,
                                  edgecolor='k'))
 
-    ax3.annotate(r'Baccarat',
+    ax3.annotate(r'Baccarat (0.048)',
                  xy=(70, 0.05), xycoords='data', **csfont,
                  xytext=(76, 0.0675), fontsize=14, textcoords='data',
                  arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=0.25", linewidth=0.5,
                                  edgecolor='k', linestyle='-'))
 
-    ax4.annotate(r'Baccarat',
+    ax4.annotate(r'Baccarat (0.048)',
                  xy=(70, 0.05), xycoords='data', **csfont,
                  xytext=(76, 0.0675), fontsize=14, textcoords='data',
                  arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=0.25", linewidth=0.5,
@@ -186,7 +194,7 @@ def make_figure_five(figure_path):
             else:
                 gap = 3
             x = data[data['V1'] == col].reset_index()['V2'][0] - gap
-            y = data[data['V1'] == col].reset_index()['V4'][0]
+            y = data[data['V1'] == col].reset_index()['V4'][0] -.00175
             #        if col =='HiBP':
             #            if axy==ax3:
             axy.text(x, y, col, fontsize=11, color=colors_long[iterator])
@@ -225,5 +233,11 @@ def make_figure_five(figure_path):
                # linestyle=[(0, (12, 6, 12, 6))],
                linestyle='--',
                color='k', linewidth=0.75, alpha=0.375)
-    plt.subplots_adjust(wspace=0.225, hspace=0.3)
+
+#    ax1.xaxis.grid(linestyle='--', alpha=0.25)
+#    ax2.xaxis.grid(linestyle='--', alpha=0.25)
+#    ax3.xaxis.grid(linestyle='--', alpha=0.25)
+#    ax4.xaxis.grid(linestyle='--', alpha=0.25)
+
+    plt.subplots_adjust(wspace=0.225, hspace=0.275)
     plt.savefig(os.path.join(figure_path, 'figure_5.pdf'), bbox_inches='tight')

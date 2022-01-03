@@ -11,11 +11,11 @@ def plot_ffc_reeval(eval_df, figure_path):
     """Make the figure!"""
     mpl.rcParams['font.family'] = 'Arial'
     csfont = {'fontname': 'Arial'}
-    letter_fontsize = 24
+    letter_fontsize = 26
     mpl.rcParams['pdf.fonttype'] = 42
     mpl.rcParams['ps.fonttype'] = 42
-    label_fontsize = 17
-    fig = plt.figure(figsize=(16, 12), tight_layout=True)
+    label_fontsize = 18
+    fig = plt.figure(figsize=(16, 12), tight_layout=False)
     ax1 = plt.subplot2grid((2, 3), (0, 0), rowspan=1, colspan=1)
     ax2 = plt.subplot2grid((2, 3), (0, 1), rowspan=1, colspan=1)
     ax3 = plt.subplot2grid((2, 3), (0, 2), rowspan=1, colspan=1)
@@ -28,29 +28,29 @@ def plot_ffc_reeval(eval_df, figure_path):
 
     ax1.scatter(x=layoff['r2_sub'].astype(float), y=layoff['ew_sub_vs_prev'].astype(float),
                 linewidth=1,linestyle='-',
-                facecolor = ([62/255, 138/255, 187/255, 0.35]), s=60,
+                facecolor = ([62/255, 138/255, 187/255, 0.35]), s=75,
                 edgecolor = ([62/255, 138/255, 187/255, 1]))
     ax1.scatter(x=layoff['r2_sub'].astype(float), y=layoff['ew_sub_vs_LPM'].astype(float),
                 linewidth=1,linestyle='-',
-                facecolor = ([244/255, 109/255, 67/255, 0.35]), s=60,
+                facecolor = ([244/255, 109/255, 67/255, 0.35]), s=75,
                 edgecolor = ([244/255, 109/255, 67/255, 1]))
 
     ax2.scatter(x=jobTraining['r2_sub'].astype(float), y=jobTraining['ew_sub_vs_prev'].astype(float),
                 linewidth=1, linestyle='-',
-                facecolor = ([62/255, 138/255, 187/255, 0.35]), s=60,
+                facecolor = ([62/255, 138/255, 187/255, 0.35]), s=75,
                 edgecolor = ([62/255, 138/255, 187/255, 1]))
     ax2.scatter(x=jobTraining['r2_sub'].astype(float), y=jobTraining['ew_sub_vs_LPM'].astype(float),
                 linewidth=1,linestyle='-',
-                facecolor = ([244/255, 109/255, 67/255, 0.35]), s=60,
+                facecolor = ([244/255, 109/255, 67/255, 0.35]), s=75,
                 edgecolor = ([244/255, 109/255, 67/255, 1]))
 
     ax3.scatter(x=eviction['r2_sub'].astype(float), y=eviction['ew_sub_vs_prev'].astype(float),
                 linewidth=1, linestyle='-',
-                facecolor = ([62/255, 138/255, 187/255, 0.35]), s=60,
+                facecolor = ([62/255, 138/255, 187/255, 0.35]), s=75,
                 edgecolor = ([62/255, 138/255, 187/255, 1]))
     ax3.scatter(x=eviction['r2_sub'].astype(float), y=eviction['ew_sub_vs_LPM'].astype(float),
                 linewidth=1,linestyle='-',
-                facecolor = ([244/255, 109/255, 67/255, 0.35]), s=60,
+                facecolor = ([244/255, 109/255, 67/255, 0.35]), s=75,
                 edgecolor = ([244/255, 109/255, 67/255, 1]))
 
     sns.despine()
@@ -60,25 +60,25 @@ def plot_ffc_reeval(eval_df, figure_path):
     ax1.set_title(r'A.', fontsize=letter_fontsize, loc='left', x=-.05, **csfont, y=1.025)
     ax2.set_title(r'B.', fontsize=letter_fontsize, loc='left', x=-.05, **csfont, y=1.025)
     ax3.set_title(r'C.', fontsize=letter_fontsize, loc='left', x=-.05, **csfont, y=1.025)
-    ax1.set_xlabel(r'Pseudo R$^2$', **csfont, fontsize=label_fontsize)
-    ax2.set_xlabel(r'Pseudo R$^2$', **csfont, fontsize=label_fontsize)
-    ax3.set_xlabel(r'Pseudo R$^2$', **csfont, fontsize=label_fontsize)
-    ax1.set_ylabel(r'IMV (Layoff)', **csfont, fontsize=label_fontsize)
-    ax2.set_ylabel(r'IMV (Job Training)', **csfont, fontsize=label_fontsize)
-    ax3.set_ylabel(r'IMV (Eviction)', **csfont, fontsize=label_fontsize)
+    ax1.set_xlabel(r'Pseudo R$^2$', **csfont, fontsize=label_fontsize-1.5)
+    ax2.set_xlabel(r'Pseudo R$^2$', **csfont, fontsize=label_fontsize-1.5)
+    ax3.set_xlabel(r'Pseudo R$^2$', **csfont, fontsize=label_fontsize-1.5)
+    ax1.set_ylabel(r'IMV (Layoff)', **csfont, fontsize=label_fontsize-1.5)
+    ax2.set_ylabel(r'IMV (Job Training)', **csfont, fontsize=label_fontsize-1.5)
+    ax3.set_ylabel(r'IMV (Eviction)', **csfont, fontsize=label_fontsize-1.5)
     ax1.set_xlim(-.0025, 0.03)
     ax1.set_ylim(-.006, ax1.get_ylim()[1])
-    ax1.spines['bottom'].set_bounds(0, ax1.get_xlim()[1])
-    ax1.spines['left'].set_bounds(-.005, ax1.get_ylim()[1])
+    #ax1.spines['bottom'].set_bounds(0, ax1.get_xlim()[1])
+    #ax1.spines['left'].set_bounds(-.005, ax1.get_ylim()[1])
     ax2.set_xlim(-.005, 0.055)
     ax2.set_ylim(-.0325, ax2.get_ylim()[1])
-    ax2.spines['bottom'].set_bounds(0, ax2.get_xlim()[1])
-    ax2.spines['left'].set_bounds(-.03, ax2.get_ylim()[1])
+    #ax2.spines['bottom'].set_bounds(0, ax2.get_xlim()[1])
+    #ax2.spines['left'].set_bounds(-.03, ax2.get_ylim()[1])
 
     ax3.set_xlim(-.005, 0.05)
     ax3.set_ylim(-.0035, ax3.get_ylim()[1])
-    ax3.spines['bottom'].set_bounds(0, ax3.get_xlim()[1])
-    ax3.spines['left'].set_bounds(-.003, ax3.get_ylim()[1])
+    #ax3.spines['bottom'].set_bounds(0, ax3.get_xlim()[1])
+    #ax3.spines['left'].set_bounds(-.003, ax3.get_ylim()[1])
 
     ax1.vlines(0.008366, ax1.get_ylim()[0], ax1.get_ylim()[1],
                linestyle=[(0, (10, 10, 10, 10))], color='k', linewidth=0.5, alpha=0.5)
@@ -102,17 +102,17 @@ def plot_ffc_reeval(eval_df, figure_path):
                               markeredgecolor=([244/255, 109/255, 67/255, 1]),
                               label=r'w$_0$ = bench', linestyle='none'), ]
     ax3.legend(handles=legend_elements, loc='lower right', frameon=True,
-               fontsize=label_fontsize, framealpha=1, facecolor='w', edgecolor='k', handletextpad=0.25)
+               fontsize=label_fontsize-2, framealpha=1, facecolor='w', edgecolor='k', handletextpad=0.25)
 
-    ax1.annotate(r'Pseudo R$^2$: benchmark',
+    ax1.annotate(r'Pseudo R$^2$: bench',
                  xy=(0.0085, -.004), xycoords='data', **csfont,
-                 xytext=(0.0125, -0.0035), fontsize=13, textcoords='data',
+                 xytext=(0.0105, -0.0035), fontsize=14, textcoords='data',
                  arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=-0.25", linewidth=0.5,
                                  edgecolor='k'))
 
-    ax1.annotate(r'E(W): benchmark vs. $\widebar{y}_{\mathrm{Train}}$',
+    ax1.annotate(r'E(W): bench vs. $\widebar{y}_{\mathrm{Train}}$',
                  xy=(0.0275, 0.0037), xycoords='data', **csfont,
-                 xytext=(0.0125, -0.001), fontsize=13, textcoords='data',
+                 xytext=(0.0105, -0.001), fontsize=14, textcoords='data',
                  arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=0.25", linewidth=0.5,
                                  edgecolor='k'))
 
@@ -125,6 +125,7 @@ def plot_ffc_reeval(eval_df, figure_path):
     ax1.tick_params(axis='both', which='major', labelsize=14)
     ax2.tick_params(axis='both', which='major', labelsize=14)
     ax3.tick_params(axis='both', which='major', labelsize=14)
+    plt.tight_layout(pad=1.5)
     plt.savefig(os.path.join(figure_path, 'figure_7.pdf'), bbox_inches='tight')
 
 
@@ -247,8 +248,8 @@ def preprocess_data(subm, bench):
     return subm, prob_subm, bench
 
 
-def make_figure_seven(figure_path):
-    data_dir = os.path.join(os.getcwd(), 'data', 'FFC')
+def make_figure_seven(figure_path, data_dir):
+    data_dir = os.path.join(data_dir, 'FFC')
     subm, bench = load_data(data_dir)
     subm, prob_subm, bench = preprocess_data(subm, bench)
     eval_df = build_df(prob_subm)

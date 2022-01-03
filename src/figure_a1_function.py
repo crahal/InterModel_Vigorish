@@ -8,14 +8,14 @@ from matplotlib.ticker import FormatStrFormatter
 nrmlzd = StandardScaler()
 
 
-def make_figure_a1(figure_path):
+def make_figure_a1(figure_path, data_path):
     mpl.rcParams['font.family'] = 'Helvetica'
     csfont = {'fontname': 'Helvetica'}
     letter_fontsize = 23
     label_fontsize = 16
-    data_dir = os.path.join(os.getcwd(), 'data', 'HRS')
-    hrs_desc = pd.read_csv(os.path.join(data_dir, 'hrs_desc.csv'), index_col=0)
-    fig = plt.figure(figsize=(16,7))
+    data_path = os.path.join(data_path, 'HRS')
+    hrs_desc = pd.read_csv(os.path.join(data_path, 'hrs_desc.csv'), index_col=0)
+    fig = plt.figure(figsize=(14.4,7.2))
     ax1 = plt.subplot2grid((1, 2), (0, 0), rowspan=1, colspan=1)
     ax2 = plt.subplot2grid((1, 2), (0, 1), rowspan=1, colspan=1)
     hrs_desc = hrs_desc.rename({'hibp': 'HiBP'}, axis=1)
@@ -73,21 +73,21 @@ def make_figure_a1(figure_path):
     ax1.set_xlabel('Age', csfont, fontsize=15);
     ax1.set_title(r'A.', fontsize=letter_fontsize, loc='left', x=-.05, **csfont, y=1)
     ax2.set_title(r'B.', fontsize=letter_fontsize, loc='left', x=-.05, **csfont, y=1)
-    ax1.legend(loc='upper center', frameon=False, ncol=5,
-               fontsize=11, framealpha=0.9, facecolor='w', edgecolor='k', handletextpad=0.5)
-    ax2.legend(loc='upper center', frameon=False, ncol=3,
+    ax1.legend(loc='upper center', frameon=True, ncol=5,
+               fontsize=10, framealpha=0.9, facecolor='w', edgecolor='k', handletextpad=0.5)
+    ax2.legend(loc='upper center', frameon=True, ncol=3,
                fontsize=12, framealpha=0.8, facecolor='w', edgecolor='k', handletextpad=0.25)
-    ax1.set_ylim(-0.05, 1.05)
-    ax1.set_xlim(53, 92)
-    ax1.spines['bottom'].set_bounds(55, ax1.get_xlim()[1])
-    ax1.spines['left'].set_bounds(0, 1)
-    ax2.set_ylim(-1.05, 1.085)
-    ax2.set_xlim(53, 92)
-    ax2.spines['bottom'].set_bounds(55, ax2.get_xlim()[1])
-    ax2.spines['left'].set_bounds(-1, 1)
+    ax1.set_ylim(0, 0.99999)
+    ax1.set_xlim(55, 92)
+    #ax1.spines['bottom'].set_bounds(55, ax1.get_xlim()[1])
+    #ax1.spines['left'].set_bounds(0, 1)
+    ax2.set_ylim(-1.0, .995)
+    ax2.set_xlim(55, 92)
+    #ax2.spines['bottom'].set_bounds(55, ax2.get_xlim()[1])
+    #ax2.spines['left'].set_bounds(-1, 1)
 
-    ax1.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
-    ax2.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+    ax1.yaxis.set_major_formatter(FormatStrFormatter('%.1f'))
+    ax2.yaxis.set_major_formatter(FormatStrFormatter('%.1f'))
 
     cols = ["HiBP", "Diab", "Cancr", "Lung", "Heart", "Strok", "Psych", "Arthr", "Proxy", "Dead"]
     iterator = 0
@@ -96,8 +96,8 @@ def make_figure_a1(figure_path):
         tmp = hrs_desc[hrs_desc[col].notnull()]
         tmp = tmp.groupby(['age'])[col].mean().reset_index()
         tmp = tmp[(tmp['age'] >= 60) & (tmp['age'] <= 90)].set_index('age')
-        y = tmp.reset_index()[col][0] - 0.025
-        x = tmp.reset_index()['age'][0] - 3.5
+        y = tmp.reset_index()[col][0] - 0.0185
+        x = tmp.reset_index()['age'][0] - 3.25
         if (iterator % 2) == 0:
             dash = '--'
             col_num = col_num + 1
@@ -115,7 +115,7 @@ def make_figure_a1(figure_path):
         else:
             age = 5
         if col == 'Cog':
-            shifter = 0.1
+            shifter = 0.0
         else:
             shifter = 0
         tmp = hrs_desc[hrs_desc[col].notnull()]
@@ -127,10 +127,14 @@ def make_figure_a1(figure_path):
         iterator = iterator + 1
         ax2.text(x, y, col, fontsize=13, c=colors3[iterator - 1])
 
-    ax1.yaxis.set_major_locator(plt.MaxNLocator(4))
+    ax1.yaxis.set_major_locator(plt.MaxNLocator(5))
     ax2.yaxis.set_major_locator(plt.MaxNLocator(5))
-    ax1.yaxis.set_minor_locator(plt.MaxNLocator(8))
+    ax1.yaxis.set_minor_locator(plt.MaxNLocator(10))
     ax2.yaxis.set_minor_locator(plt.MaxNLocator(10))
+    ax1.yaxis.grid(linestyle='--', alpha=0.25, which='both')
+    ax1.xaxis.grid(linestyle='--', alpha=0.25, which='both')
+    ax2.xaxis.grid(linestyle='--', alpha=0.25, which='both')
+    ax2.yaxis.grid(linestyle='--', alpha=0.25, which='both')
     ax1.tick_params(axis='both', which='major', width=1.25, length=5, labelsize=12)
     ax1.tick_params(axis='both', which='minor', width=1.25, length=3, labelsize=12)
     ax2.tick_params(axis='both', which='major', width=1.25, length=5, labelsize=12)
