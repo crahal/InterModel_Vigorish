@@ -167,14 +167,24 @@ def get_predictions(X_train, Y_train, X_test, Y_test):
     baseline_pred_class = len(Y_test)*[0]
     baseline_pred_proba = len(Y_test)*[np.mean(Y_train)]
     baseline_scores = get_scores(Y_test, baseline_pred_class, baseline_pred_proba, Y_train)
-    return pd.DataFrame(list(zip(log_scores, svc_scores,
-                                gaussian_scores,
-                                lgbm_scores,
-                                rf_scores,
-                                baseline_scores)),
+    score_holder = pd.DataFrame(list(zip(log_scores,
+                                         svc_scores,
+                                         gaussian_scores,
+                                         lgbm_scores,
+                                         rf_scores,
+                                         baseline_scores)),
                         columns=['Logistic', 'SVC', 'Naive Bayes',
                                  'LightGBM', 'RF', 'Baseline'],
                         index=['Log Loss', 'Accuracy', 'Brier Score Loss', 'F1', 'ROC-AUC', 'Jaccard', 'R2', 'IMV'])
+    proba_holder = pd.DataFrame(list(zip(Y_log_pred_proba,
+                                         Y_svc_pred_proba,
+                                         Y_gau_pred_proba,
+                                         Y_lgbm_pred_proba,
+                                         Y_rf_pred_proba,
+                                         baseline_pred_proba)),
+                        columns=['Logistic', 'SVC', 'Naive Bayes',
+                                 'LightGBM', 'RF', 'Baseline'])
+    return score_holder, proba_holder
 
 
 def titanic_main(data_path, table_path):
@@ -183,16 +193,20 @@ def titanic_main(data_path, table_path):
     n_fold = 10
     skf = KFold(n_splits=n_fold, random_state=1234, shuffle=True)
     score_holder = pd.DataFrame()
+    prob_holder = pd.DataFrame()
     counter = 0
     for train_index, test_index in skf.split(X, y):
         X_train, X_test = X[X.index.isin(train_index)], X[X.index.isin(test_index)]
         y_train, y_test = y[y.index.isin(train_index)], y[y.index.isin(test_index)]
         if counter == 0:
-            score_holder = get_predictions(X_train, y_train, X_test, y_test)
+            score_holder, prob_holder = get_predictions(X_train, y_train, X_test, y_test)
         else:
-            score_holder = score_holder + get_predictions(X_train, y_train, X_test, y_test)
+            score_temp, prob_temp = get_predictions(X_train, y_train, X_test, y_test)
+            score_holder = score_holder + score_temp
+            prob_holder = prob_holder.append(prob_temp)
         counter = counter + 1
     score_holder = (score_holder / n_fold).round(decimals=3)
-    print(score_holder)
+    print( score_holder)
     score_holder.to_csv(os.path.join(table_path, 'titanic_table.csv'))
+    return score_holder, prob_holder
 
