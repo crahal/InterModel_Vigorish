@@ -41,20 +41,19 @@ The code in this repo is in both R (again, with full and unreserved attribution 
 * _./src/make_hrs_pred.R_: [Ben](https://github.com/ben-domingue)'s code for predicting probabilities for the HRS data.
 * _./src/make_ffc_d/_: A version of the `aggregate_score_analyses.R` file written by Ian Lundberg, and slightly modified to output `logit` outcomes, obtainable from the [Harvard Dataverse](https://doi.org/10.7910/DVN/CXSECU).
 * _./src/figure_1_function.py_: A module which creates the 1igure 1 schematic outlining how the IMV works.
-* * _./src/make_r2_sims.R_ : [Ben](https://github.com/ben-domingue)'s code for making the simulation outputs for Figure 2.D
-* _./src/make_simulations.R_: [Ben](https://github.com/ben-domingue)'s code for making the simulation outputs for Figures 3 and 4.
-* * _./src/figure_2_function.py_: A module which visualizes the descriptive properties of the IMV as shown in Figure 2.
-* * _./src/figure_3_function.py_: A module which visualizes the outcomes for the simulation exercise with predictions based on _x_ alone.
-* * _./src/figure_4_function.py_: A module which visualizes the outcomes for the simulation exercise with predictions based on _x_ and _z_.
+  * _./src/make_r2_sims.R_ : [Ben](https://github.com/ben-domingue)'s code for making the simulation outputs for Figure 2.D
+* _./src/make_simulations.R_: [Ben](https://github.com/ben-domingue)'s code for making the simulation outputs for Figures 3 and 4.* _./src/figure_2_function.py_: A module which visualizes the descriptive properties of the IMV as shown in Figure 2.
+* _./src/figure_3_function.py_: A module which visualizes the outcomes for the simulation exercise with predictions based on _x_ alone.
+  * _./src/figure_4_function.py_: A module which visualizes the outcomes for the simulation exercise with predictions based on _x_ and _z_.
 * _./src/figure_5_function.py_: Visualizing the IMVs for the HRS application.
 * _./src/figure_6_function.py_: Visualizing the IMVs for the GSS application.
 * _./src/figure_7_function.py_: Calculating the IMV for various (logit) predictions of the benchmark models for the three binary outcomes. Visualizes IMV for benchmark vs. actual submissions.
 * _./src/figure_a1_function.py_: Plots the descriptive (Figure A.1) figure for the HRS data.
 * _./src/titanic_competition.py_: Code to replicate our titanic submission (with train.csv in `../data/`.
 * _./src/make_logreg_sims.R_: [Ben](https://github.com/ben-domingue)'s code to replicate the logistic regression simulations (oracle, omea, underfit).
-* * _./src/make_logreg_figure.py_: Code to make the figure for the logistic regression simulations (oracle, omea, underfit).
+  * _./src/make_logreg_figure.py_: Code to make the figure for the logistic regression simulations (oracle, omea, underfit).
 * _./src/titanic_competition.py_: Code to replicate our titanic submission (with train.csv in `../data/`.
 * _./src/make_compare_sims.R: [Ben](https://github.com/ben-domingue)'s code to make the simulations which powers the pairplot.
-* * _./src/figure_compare.py: Code to plot the results of the simulations which power the pairplot.* 
+  * _./src/figure_compare.py: Code to plot the results of the simulations which power the pairplot.* 
 
 As always, requirements can be found in the _requirements.txt_ (e.g. be sure to `pip install -r requirements.txt` when cloning) file. Please raise all issues for tracking as appropriate!
