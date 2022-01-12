@@ -24,8 +24,8 @@ def make_figure_two(figure_path, sim_path):
     ax4 = plt.subplot2grid((2, 34), (1, 18), rowspan=1, colspan=14)
 
     dicts_abovehalf = {}
-    for a in np.arange(start=0.5, stop=0.99, step=0.001):
-        dicts_abovehalf[a] = get_w(a, 0.5, [(0.5, 0.99)])
+    for a in np.arange(start=0.5, stop=0.9999, step=0.0001):
+        dicts_abovehalf[a] = get_w(a, 0.5, [(0.5, 0.9999)])
     ax1.plot(dicts_abovehalf.keys(), dicts_abovehalf.values(), '-', color='#3e8abb', linewidth=1.5)
 
 #    dicts_belowhalf = {}
@@ -38,7 +38,7 @@ def make_figure_two(figure_path, sim_path):
     ax1.xaxis.grid(linestyle='--', alpha=0.25)
     ax1.yaxis.grid(linestyle='--', alpha=0.25)
     ax1.set_title(r'A.', fontsize=letter_fontsize, loc='left', y=1.025, x=-.05, **csfont)
-    ax1.set_ylim(ax1.get_ylim()[0], 1)
+    ax1.set_ylim(ax1.get_ylim()[0], 1.02)
     ax1.tick_params(axis='y', labelsize=13)
     ax1.tick_params(axis='x', labelsize=13)
 
@@ -125,9 +125,7 @@ def make_figure_two(figure_path, sim_path):
             df1['imv'] = float(filename.split('_')[-1].split('.csv')[0])
             df = df.append(df1, ignore_index=True)
 
-    colors1 = ['#440154FF', '#3E4A89FF',
-               '#26828EFF', '#35B779FF',
-               '#B4DE2CFF']
+    colors1 = ['#a50026', '#f46d43', '#fdae61', '#abd9e9', '#313695']
 
     col = 0
     for imv in df['imv'].unique():
