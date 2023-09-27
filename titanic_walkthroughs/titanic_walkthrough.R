@@ -32,7 +32,8 @@ github_data_url <- paste0(GITHUB_URL, GITHUB_REPO, DATA_FILE_PATH)
 titanic <- read.csv(github_data_url)
 titanic$constant <- 1
 titanic$sex <- ifelse(titanic$sex == "female", 1, 0)
-titanic= titanic[sample(1:nrow(titanic)), ]
+titanic = titanic[sample(1:nrow(titanic)), ]
+prev = mean(titanic$survived)
 imv_list <- c()
 k_folds <- 10
 
@@ -66,4 +67,4 @@ for (i in 1:k_folds) {
 }
 
 cat("IMV min:", min(imv_list), ", max:", max(imv_list),
-    ", mean:", mean(imv_list))
+    ", mean:", mean(imv_list), ", stdev:", sd(imv_list), ", prev: ", prev)
