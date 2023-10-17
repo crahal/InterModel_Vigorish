@@ -1,3 +1,5 @@
+# Author: github.com/ben-domingue
+
 simdata<-function(N,b0,b1,b2) {
   gen.data<-function(x,z,b0=0,b1=.5,b2=1) {
     k<-exp(b0+b1*x+b2*z)

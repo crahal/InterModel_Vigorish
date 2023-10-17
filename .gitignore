@@ -233,3 +233,4 @@ dmypy.json
 /src/.Rhistory
 /imv_app/server.R
 /imv_app/ui.R
+/data/HRS/hrs_descriptives.csv

@@ -1,3 +1,5 @@
+# Author: github.com/ben-domingue
+
 ff<-function(arg) {
   for (i in 1:length(arg)) assign(names(arg)[i],arg[[i]])
   imv<-function(y,p1,p2) {
