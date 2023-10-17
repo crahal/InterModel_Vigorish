@@ -231,6 +231,4 @@ dmypy.json
 /data/HRS/.Rhistory
 /example_titanic/.Rhistory
 /src/.Rhistory
-/imv_app/server.R
-/imv_app/ui.R
 /data/HRS/hrs_descriptives.csv
