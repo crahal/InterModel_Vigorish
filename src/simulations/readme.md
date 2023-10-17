@@ -1,0 +1,1 @@
+A sub-directory of code which powers the simulation results found in `./data/sims`, and are then generally visualised in `./src/3_plot_main.ipynb.` and `./src/4_plot_suppmat.ipynb`.

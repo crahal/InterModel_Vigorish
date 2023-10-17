@@ -1,0 +1,1 @@
+Three examples which introduce the concept of the IMV in a weighted coin framework. The results in R, Python and MATLAB all give identical results: feel free to make a pull request with additional languages! The results should be identical, and are to at least six decimal places (i.e. 0.237229).
