@@ -13,10 +13,10 @@ def plot_hrs_imv(fig_path, data_path, style_dict, fig_name):
     letter_fontsize = 24
     label_fontsize = 15
     data_dir = os.path.join(data_path, 'HRS')
-    out1a = pd.read_csv(os.path.join(data_dir, 'out1a.csv'))
-    out1b = pd.read_csv(os.path.join(data_dir, 'out1b.csv'))
-    out1c = pd.read_csv(os.path.join(data_dir, 'out1c.csv'))
-    out2c = pd.read_csv(os.path.join(data_dir, 'out2c.csv'))
+    out1a = pd.read_csv(os.path.join(data_dir, 'out1a.csv'), index_col=False)
+    out1b = pd.read_csv(os.path.join(data_dir, 'out1b.csv'), index_col=False)
+    out1c = pd.read_csv(os.path.join(data_dir, 'out1c.csv'), index_col=False)
+    out2c = pd.read_csv(os.path.join(data_dir, 'out2c.csv'), index_col=False)
 
     fig = plt.figure(figsize=(14.4, 13))
     ax1 = plt.subplot2grid((2, 2), (0, 0), rowspan=1, colspan=1)
