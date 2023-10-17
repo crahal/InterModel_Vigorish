@@ -1,3 +1,5 @@
+# Author: github.com/ben-domingue
+
 from = here('data', 'GSS', 'raw', 'GSSvars.csv')
 vars<-read.csv(file=from, sep=",", header=TRUE)
 from = here('data', 'GSS', 'raw', 'GSS.csv')

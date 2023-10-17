@@ -1,3 +1,5 @@
+# Author: github.com/ben-domingue
+
 #In this case, we associated to the positive data instances the values Beta(a, b) distribution and associated to the negative data instances the values
 #Beta(c, d) distribution with a, b, c, d ranging from 1 to 15.
 #Digital Object Identifier 10.1109/ACCESS.2021.3084050

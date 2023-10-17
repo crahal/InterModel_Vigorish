@@ -1,3 +1,5 @@
+# Author: github.com/ben-domingue
+
 library(parallel)
 library(here)
 

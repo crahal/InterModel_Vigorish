@@ -1,3 +1,5 @@
+# Author: github.com/ben-domingue
+
 f<-function(N,b,k=10) {
   imv<-function(y,p1,p2) {
     ##

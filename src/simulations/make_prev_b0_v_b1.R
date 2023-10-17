@@ -1,3 +1,5 @@
+# Author: github.com/ben-domingue
+
 ##hold IMV constant
 f<-function(b0,omega=0.01) {
   getp<-function(a) { #see eqn 7. this identies the isomorphic coin

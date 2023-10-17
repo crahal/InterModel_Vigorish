@@ -3,6 +3,7 @@
 ########################################
 
 ## Code by Ian Lundberg (ever so slightly modified by crahal)
+## See: https://github.com/formidable-family
 
 #####################
 ## Set seed for    ##
