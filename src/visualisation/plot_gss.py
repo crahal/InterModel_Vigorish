@@ -31,7 +31,7 @@ def plot_gss(fig_path, data_path, style_dict, fig_name):
                    linewidth = style_dict['line_width']
                    )
     gssZ['x'].plot(ax=ax2, c=style_dict['colours'][2],
-                   linewidth = style_dict['line_width']
+                   linewidth=style_dict['line_width']
                    )
     ax1.set_title(r'A.', fontsize=letter_fontsize, loc='left', y=1.02, x=-.05, **csfont)
     ax2.set_title(r'B.', fontsize=letter_fontsize, loc='left', y=1.02, x=-.05, **csfont)

@@ -56,8 +56,6 @@ def plot_covid_imv(fig_path, data_path, style_dict, fig_name):
     imv_data = pd.merge(imv_data, df5, left_index=True, right_index=True)
     imv_data = pd.merge(imv_data, df6, left_index=True, right_index=True)
 
-
-
     imv_data1 = pd.DataFrame(index=range(0, 400), columns = ['IMV', 'Model', 'Date'])
 
     imv_data1.loc[0:99, 'IMV'] = imv_data['firstwave_smallmodel'].tolist()
@@ -142,7 +140,7 @@ def plot_covid_imv(fig_path, data_path, style_dict, fig_name):
     from PIL import ImageColor
     from matplotlib.collections import PolyCollection
 
-    my_color1 = (0/255, 28/255, 84/255, 0.1)
+    my_color1 = (65/255, 85/255, 140/255, 0.1)
     my_color2 = (232/255, 152/255, 24/255, 0.1)
 
     sns.violinplot(

@@ -14,7 +14,6 @@ def plot_omega_oracle_overfit(fig_path, data_path, style_dict, fig_name):
     csfont = {'fontname': style_dict['font']}
     letter_fontsize = 23
     label_fontsize = 18
-    colors = style_dict['colours']
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(16, 8))
 
     data_path = os.path.join(data_path, 'sims', 'omega_oracle_overfit')
@@ -25,64 +24,62 @@ def plot_omega_oracle_overfit(fig_path, data_path, style_dict, fig_name):
     omega_0_01 = pd.read_csv(os.path.join(data_path, 'omega_0_0.1.csv'))
     oracle_01 = pd.read_csv(os.path.join(data_path, 'oracle_0.1.csv'))
     overfit_01 = pd.read_csv(os.path.join(data_path, 'overfit_0.1.csv'))
-
     omega_0_05 = pd.read_csv(os.path.join(data_path, 'omega_0_0.5.csv'))
     oracle_05 = pd.read_csv(os.path.join(data_path, 'oracle_0.5.csv'))
     overfit_05 = pd.read_csv(os.path.join(data_path, 'overfit_0.5.csv'))
 
-
-    ax1.plot(oracle_001['x'], oracle_001['predict'], color=colors[0])
+    ax1.plot(oracle_001['x'], oracle_001['predict'], color=style_dict['colours'][0])
     ax1.fill_between(oracle_001['x'],
                      oracle_001['predict'] - 3.291 * oracle_001['se'],
-                     oracle_001['predict'] + 3.291 * oracle_001['se'], color=colors[0],
+                     oracle_001['predict'] + 3.291 * oracle_001['se'], color=style_dict['colours'][0],
                      alpha=0.15)
 
-    ax1.plot(overfit_001['x'], overfit_001['predict'], color=colors[1])
+    ax1.plot(overfit_001['x'], overfit_001['predict'], color=style_dict['colours'][1])
     ax1.fill_between(overfit_001['x'],
                      overfit_001['predict'] - 3.291 * overfit_001['se'],
-                     overfit_001['predict'] + 3.291 * overfit_001['se'], color=colors[1],
+                     overfit_001['predict'] + 3.291 * overfit_001['se'], color=style_dict['colours'][1],
                      alpha=0.15)
 
-    ax1.plot(omega_0_001['x'], omega_0_001['predict'], color=colors[2])
+    ax1.plot(omega_0_001['x'], omega_0_001['predict'], color=style_dict['colours'][2])
     ax1.fill_between(omega_0_001['x'],
                      omega_0_001['predict'] - 3.291 * omega_0_001['se'],
-                     omega_0_001['predict'] + 3.291 * omega_0_001['se'], color=colors[2],
+                     omega_0_001['predict'] + 3.291 * omega_0_001['se'], color=style_dict['colours'][2],
                      alpha=0.15)
 
-    ax2.plot(oracle_01['x'], oracle_01['predict'], color=colors[0])
+    ax2.plot(oracle_01['x'], oracle_01['predict'], color=style_dict['colours'][0])
     ax2.fill_between(oracle_01['x'],
                      oracle_01['predict'] - 3.291 * oracle_01['se'],
-                     oracle_01['predict'] + 3.291 * oracle_01['se'], color=colors[0],
+                     oracle_01['predict'] + 3.291 * oracle_01['se'], color=style_dict['colours'][0],
                      alpha=0.15)
 
-    ax2.plot(overfit_01['x'], overfit_01['predict'], color=colors[1])
+    ax2.plot(overfit_01['x'], overfit_01['predict'], color=style_dict['colours'][1])
     ax2.fill_between(overfit_01['x'],
                      overfit_01['predict'] - 3.291 * overfit_01['se'],
-                     overfit_01['predict'] + 3.291 * overfit_01['se'], color=colors[1],
+                     overfit_01['predict'] + 3.291 * overfit_01['se'], color=style_dict['colours'][1],
                      alpha=0.15)
 
-    ax2.plot(omega_0_01['x'], omega_0_01['predict'], color=colors[2])
+    ax2.plot(omega_0_01['x'], omega_0_01['predict'], color=style_dict['colours'][2])
     ax2.fill_between(omega_0_01['x'],
                      omega_0_01['predict'] - 3.291 * omega_0_01['se'],
-                     omega_0_01['predict'] + 3.291 * omega_0_01['se'], color=colors[2],
+                     omega_0_01['predict'] + 3.291 * omega_0_01['se'], color=style_dict['colours'][2],
                      alpha=0.15)
 
-    ax3.plot(oracle_05['x'], oracle_05['predict'], color=colors[0])
+    ax3.plot(oracle_05['x'], oracle_05['predict'], color=style_dict['colours'][0])
     ax3.fill_between(oracle_05['x'],
                      oracle_05['predict'] - 3.291 * oracle_05['se'],
-                     oracle_05['predict'] + 3.291 * oracle_05['se'], color=colors[0],
+                     oracle_05['predict'] + 3.291 * oracle_05['se'], color=style_dict['colours'][0],
                      alpha=0.15)
 
-    ax3.plot(overfit_05['x'], overfit_05['predict'], color=colors[1])
+    ax3.plot(overfit_05['x'], overfit_05['predict'], color=style_dict['colours'][1])
     ax3.fill_between(overfit_05['x'],
                      overfit_05['predict'] - 3.291 * overfit_05['se'],
-                     overfit_05['predict'] + 3.291 * overfit_05['se'], color=colors[1],
+                     overfit_05['predict'] + 3.291 * overfit_05['se'], color=style_dict['colours'][1],
                      alpha=0.15)
 
-    ax3.plot(omega_0_05['x'], omega_0_05['predict'], color=colors[2])
+    ax3.plot(omega_0_05['x'], omega_0_05['predict'], color=style_dict['colours'][2])
     ax3.fill_between(omega_0_05['x'],
                      omega_0_05['predict'] - 3.291 * omega_0_05['se'],
-                     omega_0_05['predict'] + 3.291 * omega_0_05['se'], color=colors[2],
+                     omega_0_05['predict'] + 3.291 * omega_0_05['se'], color=style_dict['colours'][2],
                      alpha=0.15)
 
     ax1.set_title(r'A.', fontsize=letter_fontsize, loc='left', y=1.025, x=-.05, **csfont)
@@ -97,16 +94,9 @@ def plot_omega_oracle_overfit(fig_path, data_path, style_dict, fig_name):
         axx.set_xlim(1, np.log10(12000))
         axx.set_xticks(xticks)
         axx.set_xticklabels([50, '', 500, '', 5000, ''], **csfont)
-
-        # Use FixedLocator to set custom tick positions
         axx.yaxis.set_major_locator(FixedLocator(axx.get_yticks()))
-
-        # Use FormatStrFormatter to set the format of tick labels and fontsize
         axx.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
-
-        # Set the fontsize for both x and y axis labels
         axx.tick_params(axis='both', labelsize=16)
-
         axx.set_xlabel('N', fontsize=letter_fontsize)
         axx.locator_params(nbins=4, axis='y')
         axx.yaxis.grid(linestyle='--', alpha=0.35)
@@ -130,15 +120,15 @@ def plot_omega_oracle_overfit(fig_path, data_path, style_dict, fig_name):
     ax3.add_artist(at)
 
     legend_elements = [Line2D([0], [0], markersize=8, marker='s',
-                              markerfacecolor=colors[0],
+                              markerfacecolor=style_dict['colours'][0],
                               markeredgecolor='k',
                               color='w', label=r'Oracle', linestyle='none'),
                        Line2D([0], [0], markersize=8, marker='s',
-                              markerfacecolor=colors[1],
+                              markerfacecolor=style_dict['colours'][1],
                               markeredgecolor='k',
                               color='w', label=r'Overfit', linestyle='none'),
                        Line2D([0], [0], markersize=8, marker='s',
-                              markerfacecolor=colors[2],
+                              markerfacecolor=style_dict['colours'][2],
                               markeredgecolor='k',
                               color='w', label=r'$\omega_0$', linestyle='none'),
                        ]

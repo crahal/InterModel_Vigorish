@@ -147,5 +147,5 @@ def plot_hrs_descriptives(fig_path, data_path, style_dict, fig_name):
     ax2.tick_params(axis='both', which='minor', width=1.25, length=3, labelsize=12)
 
     sns.despine()
-    plt.subplots_adjust(wspace=.25, hspace=0)
+    plt.subplots_adjust(wspace=.2, hspace=0)
     plt.savefig(os.path.join(fig_path, fig_name), bbox_inches='tight')

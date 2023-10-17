@@ -9,7 +9,6 @@ from matplotlib.offsetbox import AnchoredText
 
 def plot_football_imv(fig_path, data_path, style_dict, fig_name):
 
-    colors = style_dict['colours']
     mpl.rcParams['font.family'] = style_dict['font']
     csfont = {'fontname': style_dict['font']}
     letter_fontsize = 23
@@ -33,25 +32,25 @@ def plot_football_imv(fig_path, data_path, style_dict, fig_name):
 
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(16, 9))
 
-    ax1.plot(football_all, color=colors[0], linestyle='--', marker=None, zorder=-1,
+    ax1.plot(football_all, color=style_dict['colours'][0], linestyle='--', marker=None, zorder=-1,
              linewidth = style_dict['line_width'])
     ax1.scatter(football_all.index, football_all.x, marker='o', color='w',
-                s=80, edgecolor=colors[0], zorder=3, linestyle='None')
-    ax1.plot(x_smooth_all, y_smooth_all, color=colors[1],
+                s=80, edgecolor=style_dict['colours'][0], zorder=3, linestyle='None')
+    ax1.plot(x_smooth_all, y_smooth_all, color=style_dict['colours'][1],
              linewidth = style_dict['line_width'])
 
-    ax2.plot(football_eng, color=colors[0], linestyle='--', marker=None, zorder=-1,
+    ax2.plot(football_eng, color=style_dict['colours'][0], linestyle='--', marker=None, zorder=-1,
              linewidth = style_dict['line_width'])
     ax2.scatter(football_eng.index, football_eng.x, marker='o', color='w',
-                s=80, edgecolor=colors[0], zorder=3, linestyle='None')
-    ax2.plot(x_smooth_eng, y_smooth_eng, color=colors[1],
+                s=80, edgecolor=style_dict['colours'][0], zorder=3, linestyle='None')
+    ax2.plot(x_smooth_eng, y_smooth_eng, color=style_dict['colours'][1],
              linewidth = style_dict['line_width'])
 
-    ax3.plot(football_nl, color=colors[0], linestyle='--', marker=None, zorder=-1,
+    ax3.plot(football_nl, color=style_dict['colours'][0], linestyle='--', marker=None, zorder=-1,
              linewidth = style_dict['line_width'])
     ax3.scatter(football_nl.index, football_nl.x, marker='o', color='w',
-                s=80, edgecolor=colors[0], zorder=3, linestyle='None')
-    ax3.plot(x_smooth_nl, y_smooth_nl, color=colors[1],
+                s=80, edgecolor=style_dict['colours'][0], zorder=3, linestyle='None')
+    ax3.plot(x_smooth_nl, y_smooth_nl, color=style_dict['colours'][1],
              linewidth = style_dict['line_width'])
 
     ax1.set_ylim(0.0, 0.42)
@@ -64,14 +63,6 @@ def plot_football_imv(fig_path, data_path, style_dict, fig_name):
     ax1.set_title(r'A.', fontsize=letter_fontsize, loc='left', y=1.015, x=-.05, **csfont)
     ax2.set_title(r'B.', fontsize=letter_fontsize, loc='left', y=1.015, x=-.05, **csfont)
     ax3.set_title(r'C.', fontsize=letter_fontsize, loc='left', y=1.015, x=-.05, **csfont)
-
-    # ax1.set_yticklabels(ax1.get_yticks(), **csfont, fontsize=15)
-    # ax2.set_yticklabels(ax2.get_yticks(), **csfont, fontsize=15)
-    # ax3.set_yticklabels(ax3.get_yticks(), **csfont, fontsize=15)
-    #
-    # ax1.set_xticklabels(ax1.get_xticks(), **csfont, fontsize=15)
-    # ax2.set_xticklabels(ax2.get_xticks(), **csfont, fontsize=15)
-    # ax3.set_xticklabels(ax3.get_xticks(), **csfont, fontsize=15)
 
     ax1.xaxis.set_major_locator(plt.MaxNLocator(5))
     ax2.xaxis.set_major_locator(plt.MaxNLocator(5))
@@ -96,11 +87,13 @@ def plot_football_imv(fig_path, data_path, style_dict, fig_name):
 
     legend_elements = [Line2D([0], [0], markersize=8, marker='o',
                               markerfacecolor='w',
-                              markeredgecolor=colors[0],
-                              color='#1D3F6E', label=r'IMV', linestyle='--'),
+                              markeredgecolor=style_dict['colours'][0],
+                              color='#1D3F6E', label=r'IMV', linestyle='--',
+                              lw=style_dict['line_width']),
                        Line2D([0], [0],
-                              color=colors[1],
-                              label=r'LOESS', linestyle='-')
+                              color=style_dict['colours'][1],
+                              label=r'LOESS', linestyle='-',
+                              lw=style_dict['line_width'])
                        ]
     ax1.legend(handles=legend_elements, loc='upper left', frameon=True,
                fontsize=16, framealpha=1, facecolor='w',

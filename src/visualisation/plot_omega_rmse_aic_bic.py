@@ -9,7 +9,6 @@ import matplotlib as mpl
 from matplotlib.offsetbox import AnchoredText
 
 def plot_omega_rmse_aic_bic(fig_path, data_path, style_dict, fig_name):
-    colors = style_dict['colours']
     mpl.rcParams['font.family'] = style_dict['font']
     csfont = {'fontname': style_dict['font']}
     label_fontsize = 19
@@ -56,70 +55,70 @@ def plot_omega_rmse_aic_bic(fig_path, data_path, style_dict, fig_name):
     bic_se_x2 = pd.read_csv(os.path.join(data_path, 'bic_se_x2.csv'), index_col=0)
     bic_x_x2 = pd.read_csv(os.path.join(data_path, 'bic_x_x2.csv'), index_col=0)
 
-    ax1.plot(rms_x_x2['x'], rms_fit_x2['x'], color=colors[0])
-    ax1.plot(rms_x_x2['x'], rms_fit_x2['x']+rms_se_x2['x'], color=colors[0], linewidth=0.25)
-    ax1.plot(rms_x_x2['x'], rms_fit_x2['x']-rms_se_x2['x'], color=colors[0], linewidth=0.25)
+    ax1.plot(rms_x_x2['x'], rms_fit_x2['x'], color=style_dict['colours'][0])
+    ax1.plot(rms_x_x2['x'], rms_fit_x2['x']+rms_se_x2['x'], color=style_dict['colours'][0], linewidth=0.25)
+    ax1.plot(rms_x_x2['x'], rms_fit_x2['x']-rms_se_x2['x'], color=style_dict['colours'][0], linewidth=0.25)
     ax1.fill_between(rms_x_x2['x'],  rms_fit_x2['x']+rms_se_x2['x'],
-                     rms_fit_x2['x']-rms_se_x2['x'], color=colors[0], alpha=0.15)
-    ax1.plot(rms_x_xepsilon['x'], rms_fit_xepsilon['x'], color=colors[1])
-    ax1.plot(rms_x_xepsilon['x'], rms_fit_xepsilon['x'] + rms_se_xepsilon['x'], color=colors[1], linewidth=0.25)
-    ax1.plot(rms_x_xepsilon['x'], rms_fit_xepsilon['x'] - rms_se_xepsilon['x'], color=colors[1], linewidth=0.25)
+                     rms_fit_x2['x']-rms_se_x2['x'], color=style_dict['colours'][0], alpha=0.15)
+    ax1.plot(rms_x_xepsilon['x'], rms_fit_xepsilon['x'], color=style_dict['colours'][1])
+    ax1.plot(rms_x_xepsilon['x'], rms_fit_xepsilon['x'] + rms_se_xepsilon['x'], color=style_dict['colours'][1], linewidth=0.25)
+    ax1.plot(rms_x_xepsilon['x'], rms_fit_xepsilon['x'] - rms_se_xepsilon['x'], color=style_dict['colours'][1], linewidth=0.25)
     ax1.fill_between(rms_x_xepsilon['x'],  rms_fit_xepsilon['x']+rms_se_xepsilon['x'],
-                     rms_fit_xepsilon['x']-rms_se_xepsilon['x'], color=colors[1], alpha=0.15)
-    ax1.plot(rms_x_cloglog['x'], rms_fit_cloglog['x'], color=colors[2])
-    ax1.plot(rms_x_cloglog['x'], rms_fit_cloglog['x']+rms_se_cloglog['x'], color=colors[2], linewidth=0.25)
-    ax1.plot(rms_x_cloglog['x'], rms_fit_cloglog['x']-rms_se_cloglog['x'], color=colors[2], linewidth=0.25)
+                     rms_fit_xepsilon['x']-rms_se_xepsilon['x'], color=style_dict['colours'][1], alpha=0.15)
+    ax1.plot(rms_x_cloglog['x'], rms_fit_cloglog['x'], color=style_dict['colours'][2])
+    ax1.plot(rms_x_cloglog['x'], rms_fit_cloglog['x']+rms_se_cloglog['x'], color=style_dict['colours'][2], linewidth=0.25)
+    ax1.plot(rms_x_cloglog['x'], rms_fit_cloglog['x']-rms_se_cloglog['x'], color=style_dict['colours'][2], linewidth=0.25)
     ax1.fill_between(rms_x_cloglog['x'],  rms_fit_cloglog['x']+rms_se_cloglog['x'],
-                     rms_fit_cloglog['x']-rms_se_cloglog['x'], color=colors[2], alpha=0.15)
+                     rms_fit_cloglog['x']-rms_se_cloglog['x'], color=style_dict['colours'][2], alpha=0.15)
 
 
-    ax2.plot(om_x_x2['x'], om_fit_x2['x'], color=colors[0])
-    ax2.plot(om_x_x2['x'], om_fit_x2['x'] + om_se_x2['x'], color=colors[0], linewidth=0.25)
-    ax2.plot(om_x_x2['x'], om_fit_x2['x'] - om_se_x2['x'], color=colors[0], linewidth=0.25)
+    ax2.plot(om_x_x2['x'], om_fit_x2['x'], color=style_dict['colours'][0])
+    ax2.plot(om_x_x2['x'], om_fit_x2['x'] + om_se_x2['x'], color=style_dict['colours'][0], linewidth=0.25)
+    ax2.plot(om_x_x2['x'], om_fit_x2['x'] - om_se_x2['x'], color=style_dict['colours'][0], linewidth=0.25)
     ax2.fill_between(om_x_x2['x'],  om_fit_x2['x'] + om_se_x2['x'],
-                     om_fit_x2['x'] - om_se_x2['x'], color=colors[0], alpha=0.15)
-    ax2.plot(om_x_xepsilon['x'], om_fit_xepsilon['x'], color=colors[1])
-    ax2.plot(om_x_xepsilon['x'], om_fit_xepsilon['x'] + om_se_xepsilon['x'], color=colors[1], linewidth=0.25)
-    ax2.plot(om_x_xepsilon['x'], om_fit_xepsilon['x'] - om_se_xepsilon['x'], color=colors[1], linewidth=0.25)
+                     om_fit_x2['x'] - om_se_x2['x'], color=style_dict['colours'][0], alpha=0.15)
+    ax2.plot(om_x_xepsilon['x'], om_fit_xepsilon['x'], color=style_dict['colours'][1])
+    ax2.plot(om_x_xepsilon['x'], om_fit_xepsilon['x'] + om_se_xepsilon['x'], color=style_dict['colours'][1], linewidth=0.25)
+    ax2.plot(om_x_xepsilon['x'], om_fit_xepsilon['x'] - om_se_xepsilon['x'], color=style_dict['colours'][1], linewidth=0.25)
     ax2.fill_between(om_x_xepsilon['x'],  om_fit_xepsilon['x'] + om_se_xepsilon['x'],
-                     om_fit_xepsilon['x'] - om_se_xepsilon['x'], color=colors[1], alpha=0.15)
-    ax2.plot(om_x_cloglog['x'], om_fit_cloglog['x'], color=colors[2])
-    ax2.plot(om_x_cloglog['x'], om_fit_cloglog['x'] + om_se_cloglog['x'], color=colors[2], linewidth=0.25)
-    ax2.plot(om_x_cloglog['x'], om_fit_cloglog['x'] - om_se_cloglog['x'], color=colors[2], linewidth=0.25)
+                     om_fit_xepsilon['x'] - om_se_xepsilon['x'], color=style_dict['colours'][1], alpha=0.15)
+    ax2.plot(om_x_cloglog['x'], om_fit_cloglog['x'], color=style_dict['colours'][2])
+    ax2.plot(om_x_cloglog['x'], om_fit_cloglog['x'] + om_se_cloglog['x'], color=style_dict['colours'][2], linewidth=0.25)
+    ax2.plot(om_x_cloglog['x'], om_fit_cloglog['x'] - om_se_cloglog['x'], color=style_dict['colours'][2], linewidth=0.25)
     ax2.fill_between(om_x_cloglog['x'],  om_fit_cloglog['x'] + om_se_cloglog['x'],
-                     om_fit_cloglog['x'] - om_se_cloglog['x'], color=colors[2], alpha=0.15)
+                     om_fit_cloglog['x'] - om_se_cloglog['x'], color=style_dict['colours'][2], alpha=0.15)
 
-    ax3.plot(aic_x_x2['x'], aic_fit_x2['x'], color=colors[0])
-    ax3.plot(aic_x_x2['x'], aic_fit_x2['x'] + aic_se_x2['x'], color=colors[0], linewidth=0.25)
-    ax3.plot(aic_x_x2['x'], aic_fit_x2['x'] - aic_se_x2['x'], color=colors[0], linewidth=0.25)
+    ax3.plot(aic_x_x2['x'], aic_fit_x2['x'], color=style_dict['colours'][0])
+    ax3.plot(aic_x_x2['x'], aic_fit_x2['x'] + aic_se_x2['x'], color=style_dict['colours'][0], linewidth=0.25)
+    ax3.plot(aic_x_x2['x'], aic_fit_x2['x'] - aic_se_x2['x'], color=style_dict['colours'][0], linewidth=0.25)
     ax3.fill_between(aic_x_x2['x'], aic_fit_x2['x'] + om_se_x2['x'],
-                     aic_fit_x2['x'] - aic_se_x2['x'], color=colors[0], alpha=0.15)
-    ax3.plot(aic_x_xepsilon['x'], aic_fit_xepsilon['x'], color=colors[1])
-    ax3.plot(aic_x_xepsilon['x'], aic_fit_xepsilon['x'] + aic_se_xepsilon['x'], color=colors[1], linewidth=0.25)
-    ax3.plot(aic_x_xepsilon['x'], aic_fit_xepsilon['x'] - aic_se_xepsilon['x'], color=colors[1], linewidth=0.25)
+                     aic_fit_x2['x'] - aic_se_x2['x'], color=style_dict['colours'][0], alpha=0.15)
+    ax3.plot(aic_x_xepsilon['x'], aic_fit_xepsilon['x'], color=style_dict['colours'][1])
+    ax3.plot(aic_x_xepsilon['x'], aic_fit_xepsilon['x'] + aic_se_xepsilon['x'], color=style_dict['colours'][1], linewidth=0.25)
+    ax3.plot(aic_x_xepsilon['x'], aic_fit_xepsilon['x'] - aic_se_xepsilon['x'], color=style_dict['colours'][1], linewidth=0.25)
     ax3.fill_between(aic_x_xepsilon['x'], aic_fit_xepsilon['x'] + aic_se_xepsilon['x'],
-                     aic_fit_xepsilon['x'] - aic_se_xepsilon['x'], color=colors[1], alpha=0.15)
-    ax3.plot(aic_x_cloglog['x'], aic_fit_cloglog['x'], color=colors[2])
-    ax3.plot(aic_x_cloglog['x'], aic_fit_cloglog['x'] + aic_se_cloglog['x'], color=colors[2], linewidth=0.25)
-    ax3.plot(aic_x_cloglog['x'], aic_fit_cloglog['x'] - aic_se_cloglog['x'], color=colors[2], linewidth=0.25)
+                     aic_fit_xepsilon['x'] - aic_se_xepsilon['x'], color=style_dict['colours'][1], alpha=0.15)
+    ax3.plot(aic_x_cloglog['x'], aic_fit_cloglog['x'], color=style_dict['colours'][2])
+    ax3.plot(aic_x_cloglog['x'], aic_fit_cloglog['x'] + aic_se_cloglog['x'], color=style_dict['colours'][2], linewidth=0.25)
+    ax3.plot(aic_x_cloglog['x'], aic_fit_cloglog['x'] - aic_se_cloglog['x'], color=style_dict['colours'][2], linewidth=0.25)
     ax3.fill_between(aic_x_cloglog['x'], aic_fit_cloglog['x'] + aic_se_cloglog['x'],
-                     aic_fit_cloglog['x'] - aic_se_cloglog['x'], color=colors[2], alpha=0.15)
+                     aic_fit_cloglog['x'] - aic_se_cloglog['x'], color=style_dict['colours'][2], alpha=0.15)
 
-    ax4.plot(bic_x_x2['x'], bic_fit_x2['x'], color=colors[0])
-    ax4.plot(bic_x_x2['x'], bic_fit_x2['x'] + bic_se_x2['x'], color=colors[0], linewidth=0.25)
-    ax4.plot(bic_x_x2['x'], bic_fit_x2['x'] - bic_se_x2['x'], color=colors[0], linewidth=0.25)
+    ax4.plot(bic_x_x2['x'], bic_fit_x2['x'], color=style_dict['colours'][0])
+    ax4.plot(bic_x_x2['x'], bic_fit_x2['x'] + bic_se_x2['x'], color=style_dict['colours'][0], linewidth=0.25)
+    ax4.plot(bic_x_x2['x'], bic_fit_x2['x'] - bic_se_x2['x'], color=style_dict['colours'][0], linewidth=0.25)
     ax4.fill_between(bic_x_x2['x'], bic_fit_x2['x'] + om_se_x2['x'],
-                     bic_fit_x2['x'] - bic_se_x2['x'], color=colors[0], alpha=0.15)
-    ax4.plot(bic_x_xepsilon['x'], bic_fit_xepsilon['x'], color=colors[1])
-    ax4.plot(bic_x_xepsilon['x'], bic_fit_xepsilon['x'] + bic_se_xepsilon['x'], color=colors[1], linewidth=0.25)
-    ax4.plot(bic_x_xepsilon['x'], bic_fit_xepsilon['x'] - bic_se_xepsilon['x'], color=colors[1], linewidth=0.25)
+                     bic_fit_x2['x'] - bic_se_x2['x'], color=style_dict['colours'][0], alpha=0.15)
+    ax4.plot(bic_x_xepsilon['x'], bic_fit_xepsilon['x'], color=style_dict['colours'][1])
+    ax4.plot(bic_x_xepsilon['x'], bic_fit_xepsilon['x'] + bic_se_xepsilon['x'], color=style_dict['colours'][1], linewidth=0.25)
+    ax4.plot(bic_x_xepsilon['x'], bic_fit_xepsilon['x'] - bic_se_xepsilon['x'], color=style_dict['colours'][1], linewidth=0.25)
     ax4.fill_between(bic_x_xepsilon['x'], bic_fit_xepsilon['x'] + bic_se_xepsilon['x'],
-                     bic_fit_xepsilon['x'] - bic_se_xepsilon['x'], color=colors[1], alpha=0.15)
-    ax4.plot(bic_x_cloglog['x'], bic_fit_cloglog['x'], color=colors[2])
-    ax4.plot(bic_x_cloglog['x'], bic_fit_cloglog['x'] + bic_se_cloglog['x'], color=colors[2], linewidth=0.25)
-    ax4.plot(bic_x_cloglog['x'], bic_fit_cloglog['x'] - bic_se_cloglog['x'], color=colors[2], linewidth=0.25)
+                     bic_fit_xepsilon['x'] - bic_se_xepsilon['x'], color=style_dict['colours'][1], alpha=0.15)
+    ax4.plot(bic_x_cloglog['x'], bic_fit_cloglog['x'], color=style_dict['colours'][2])
+    ax4.plot(bic_x_cloglog['x'], bic_fit_cloglog['x'] + bic_se_cloglog['x'], color=style_dict['colours'][2], linewidth=0.25)
+    ax4.plot(bic_x_cloglog['x'], bic_fit_cloglog['x'] - bic_se_cloglog['x'], color=style_dict['colours'][2], linewidth=0.25)
     ax4.fill_between(bic_x_cloglog['x'], bic_fit_cloglog['x'] + bic_se_cloglog['x'],
-                     bic_fit_cloglog['x'] - bic_se_cloglog['x'], color=colors[2], alpha=0.15)
+                     bic_fit_cloglog['x'] - bic_se_cloglog['x'], color=style_dict['colours'][2], alpha=0.15)
 
     ax1.set_ylim(0, 0.06)
     ax2.set_ylim(-0.003, 0.03)
@@ -182,17 +181,17 @@ def plot_omega_rmse_aic_bic(fig_path, data_path, style_dict, fig_name):
                (207/255, 32/255, 42/255, 100/255)]
 
     legend_elements = [Line2D([0], [0], markersize=0, marker='s',
-                              markerfacecolor=colors[0],
+                              markerfacecolor=style_dict['colours'][0],
                               markeredgecolor='k',
-                              color=colors[0], label=r'x$^2$ (Fit)', linewidth=1.5),
+                              color=style_dict['colours'][0], label=r'x$^2$ (Fit)', linewidth=1.5),
                        Line2D([0], [0], markersize=0, marker='s',
-                              markerfacecolor=colors[1],
+                              markerfacecolor=style_dict['colours'][1],
                               markeredgecolor='k',
-                              color=colors[1], label=r'x+$\varepsilon$ (Fit)', linewidth=1.5),
+                              color=style_dict['colours'][1], label=r'x+$\varepsilon$ (Fit)', linewidth=1.5),
                        Line2D([0], [0], markersize=0, marker='s',
                               #markerfacecolor=colors[2],
                               markeredgecolor='k',
-                              color=colors[2], label=r'cloglog (Fit)', linewidth=1.5),
+                              color=style_dict['colours'][2], label=r'cloglog (Fit)', linewidth=1.5),
                        Line2D([0], [0], markersize=8, marker='s',
                               markerfacecolor=colors1[0],
                               markeredgecolor='k',
@@ -219,21 +218,21 @@ def plot_omega_rmse_aic_bic(fig_path, data_path, style_dict, fig_name):
     ax3.set_xlim(1.225,)
     ax4.set_xlim(1.225,)
 
-    ax1.annotate('x$^2$', (1.5, rms_fit_x2['x'][1]), fontsize=12, color=colors[0])
-    ax1.annotate('x+$\epsilon$', (1.4, rms_fit_xepsilon['x'][1]), fontsize=12, color=colors[1])
-    ax1.annotate('cloglog', (1.25, rms_fit_cloglog['x'][1]), fontsize=12, color=colors[2])
+    ax1.annotate('x$^2$', (1.5, rms_fit_x2['x'][1]), fontsize=12, color=style_dict['colours'][0])
+    ax1.annotate('x+$\epsilon$', (1.4, rms_fit_xepsilon['x'][1]), fontsize=12, color=style_dict['colours'][1])
+    ax1.annotate('cloglog', (1.25, rms_fit_cloglog['x'][1]), fontsize=12, color=style_dict['colours'][2])
 
-    ax2.annotate('x$^2$', (1.5, om_fit_x2['x'][1]), fontsize=12, color=colors[0])
-    ax2.annotate('x+$\epsilon$', (1.4, om_fit_xepsilon['x'][1]), fontsize=12, color=colors[1])
-    ax2.annotate('cloglog', (1.25, om_fit_cloglog['x'][1]), fontsize=12, color=colors[2])
+    ax2.annotate('x$^2$', (1.5, om_fit_x2['x'][1]), fontsize=12, color=style_dict['colours'][0])
+    ax2.annotate('x+$\epsilon$', (1.4, om_fit_xepsilon['x'][1]), fontsize=12, color=style_dict['colours'][1])
+    ax2.annotate('cloglog', (1.25, om_fit_cloglog['x'][1]), fontsize=12, color=style_dict['colours'][2])
 
-    ax3.annotate('x$^2$', (1.5, aic_fit_x2['x'][1]), fontsize=12, color=colors[0])
-    ax3.annotate('x+$\epsilon$', (1.4, aic_fit_xepsilon['x'][1]), fontsize=12, color=colors[1])
-    ax3.annotate('cloglog', (1.25, aic_fit_cloglog['x'][1]), fontsize=12, color=colors[2])
+    ax3.annotate('x$^2$', (1.5, aic_fit_x2['x'][1]), fontsize=12, color=style_dict['colours'][0])
+    ax3.annotate('x+$\epsilon$', (1.4, aic_fit_xepsilon['x'][1]), fontsize=12, color=style_dict['colours'][1])
+    ax3.annotate('cloglog', (1.25, aic_fit_cloglog['x'][1]), fontsize=12, color=style_dict['colours'][2])
 
-    ax4.annotate('x$^2$', (1.5, bic_fit_x2['x'][1]), fontsize=12, color=colors[0])
-    ax4.annotate('x+$\epsilon$', (1.4, bic_fit_xepsilon['x'][1]), fontsize=12, color=colors[1])
-    ax4.annotate('cloglog', (1.25, bic_fit_cloglog['x'][1]), fontsize=12, color=colors[2])
+    ax4.annotate('x$^2$', (1.5, bic_fit_x2['x'][1]), fontsize=12, color=style_dict['colours'][0])
+    ax4.annotate('x+$\epsilon$', (1.4, bic_fit_xepsilon['x'][1]), fontsize=12, color=style_dict['colours'][1])
+    ax4.annotate('cloglog', (1.25, bic_fit_cloglog['x'][1]), fontsize=12, color=style_dict['colours'][2])
 
     at = AnchoredText(
         r"$\mathrm{\beta}$=0.05", prop=dict(size=15), frameon=True, loc='upper right')

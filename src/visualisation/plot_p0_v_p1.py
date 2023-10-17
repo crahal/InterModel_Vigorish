@@ -7,9 +7,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.ticker import FixedLocator, FormatStrFormatter
 
-
 def plot_p0_v_p1(fig_path, data_path, style_dict, fig_name):
-    colors = style_dict['colours']
     mpl.rcParams['font.family'] = style_dict['font']
     csfont = {'fontname': style_dict['font']}
     letter_fontsize = 24
@@ -81,16 +79,17 @@ def plot_p0_v_p1(fig_path, data_path, style_dict, fig_name):
     ax3.set_ylabel(r'AUC', fontsize=label_fontsize+4, **csfont)
     ax4.set_ylabel(r'IMV', fontsize=label_fontsize+4, **csfont)
     legend_elements = [Line2D([0], [0], markersize=0, marker='s',
-                              markerfacecolor=colors[1],
+                              markerfacecolor=style_dict['colours'][1],
                               markeredgecolor='k',
-                              lw=2,
-                              color=colors[1], label=r'p', linestyle='-'),
+                              lw=style_dict['line_width'],
+                              color=style_dict['colours'][1],
+                              label='p', linestyle='-'),
                        Line2D([0], [0], markersize=0, marker='s',
-                              markerfacecolor=colors[0],
-                              lw=2,
+                              markerfacecolor=style_dict['colours'][0],
+                              lw=style_dict['line_width'],
                               markeredgecolor='k',
-                              color=colors[0], label=r'p1', linestyle='--'),]
-    ax1.legend(handles=legend_elements, loc='upper left', frameon=True,# title='$\omega$',title_fontsize=22,
+                              color=style_dict['colours'][0], label=r'p1', linestyle='--')]
+    ax1.legend(handles=legend_elements, loc='upper left', frameon=True,
                fontsize=label_fontsize+1, framealpha=1, facecolor='w', edgecolor='k', handletextpad=0.25)
     plt.tight_layout(pad=2.5)
     plt.savefig(os.path.join(fig_path, fig_name), bbox_inches='tight')

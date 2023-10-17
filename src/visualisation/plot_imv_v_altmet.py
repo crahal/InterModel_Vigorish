@@ -41,7 +41,6 @@ def lowess_with_confidence_bounds(
 def plot_imv_v_altmet(fig_path, data_path, style_dict, fig_name):
     mpl.rcParams['font.family'] = style_dict['font']
     csfont = {'fontname': style_dict['font']}
-    colors = style_dict['colours']
     letter_fontsize = 24
     label_fontsize = 18
     df_noz = pd.read_csv(os.path.join(data_path, 'sims', 'imv_v_altmet', 'imv_v_altmet.csv'))
@@ -71,22 +70,22 @@ def plot_imv_v_altmet(fig_path, data_path, style_dict, fig_name):
     smoothed_b0_ew, bottom_b0_ew, top_b0_ew = lowess_with_confidence_bounds(
         df_noz['b0'], df_noz['ew'], eval_x, lowess_kw={"frac": 1})
 
-    ax1.plot(eval_x, smoothed_b0_f1, color=colors[0])
-    ax1.plot(eval_x, bottom_b0_f1, color=colors[0], alpha=0.5, linestyle='--')
-    ax1.plot(eval_x, top_b0_f1, color=colors[0], alpha=0.5, linestyle='--')
-    ax1.fill_between(eval_x, bottom_b0_f1, top_b0_f1, color=colors[0], alpha=0.25)
-    ax1.plot(eval_x, smoothed_b0_auc, color=colors[0])
-    ax1.plot(eval_x, bottom_b0_auc, color=colors[0], alpha=0.5, linestyle='--')
-    ax1.plot(eval_x, top_b0_auc, color=colors[0], alpha=0.5, linestyle='--')
-    ax1.fill_between(eval_x, bottom_b0_auc, top_b0_auc, color=colors[0], alpha=0.25)
-    ax1.plot(eval_x, smoothed_b0_r2, color=colors[0])
-    ax1.plot(eval_x, bottom_b0_r2, color=colors[0], alpha=0.5, linestyle='--')
-    ax1.plot(eval_x, top_b0_r2, color=colors[0], alpha=0.5, linestyle='--')
-    ax1.fill_between(eval_x, bottom_b0_r2, top_b0_r2, color=colors[0], alpha=0.25)
-    ax1.plot(eval_x, smoothed_b0_ew, color=colors[1])
-    ax1.plot(eval_x, bottom_b0_ew, color=colors[1], alpha=0.5, linestyle='--')
-    ax1.plot(eval_x, top_b0_ew, color=colors[1], alpha=0.5, linestyle='--')
-    ax1.fill_between(eval_x, bottom_b0_ew, top_b0_ew, color=colors[1], alpha=0.25)
+    ax1.plot(eval_x, smoothed_b0_f1, color=style_dict['colours'][0])
+    ax1.plot(eval_x, bottom_b0_f1, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax1.plot(eval_x, top_b0_f1, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax1.fill_between(eval_x, bottom_b0_f1, top_b0_f1, color=style_dict['colours'][0], alpha=0.25)
+    ax1.plot(eval_x, smoothed_b0_auc, color=style_dict['colours'][0])
+    ax1.plot(eval_x, bottom_b0_auc, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax1.plot(eval_x, top_b0_auc, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax1.fill_between(eval_x, bottom_b0_auc, top_b0_auc, color=style_dict['colours'][0], alpha=0.25)
+    ax1.plot(eval_x, smoothed_b0_r2, color=style_dict['colours'][0])
+    ax1.plot(eval_x, bottom_b0_r2, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax1.plot(eval_x, top_b0_r2, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax1.fill_between(eval_x, bottom_b0_r2, top_b0_r2, color=style_dict['colours'][0], alpha=0.25)
+    ax1.plot(eval_x, smoothed_b0_ew, color=style_dict['colours'][1])
+    ax1.plot(eval_x, bottom_b0_ew, color=style_dict['colours'][1], alpha=0.5, linestyle='--')
+    ax1.plot(eval_x, top_b0_ew, color=style_dict['colours'][1], alpha=0.5, linestyle='--')
+    ax1.fill_between(eval_x, bottom_b0_ew, top_b0_ew, color=style_dict['colours'][1], alpha=0.25)
 
 
     smoothed_b1_f1, bottom_b1_f1, top_b1_f1 = lowess_with_confidence_bounds(
@@ -98,22 +97,22 @@ def plot_imv_v_altmet(fig_path, data_path, style_dict, fig_name):
     smoothed_b1_ew, bottom_b1_ew, top_b1_ew = lowess_with_confidence_bounds(
         df_noz['b1'], df_noz['ew'], eval_x, lowess_kw={"frac": 1/3})
 
-    ax2.plot(eval_x, smoothed_b1_f1, color=colors[0])
-    ax2.plot(eval_x, bottom_b1_f1, color=colors[0], alpha=0.5, linestyle='--')
-    ax2.plot(eval_x, top_b1_f1, color=colors[0], alpha=0.5, linestyle='--')
-    ax2.fill_between(eval_x, bottom_b1_f1, top_b1_f1, color=colors[0], alpha=0.25)
-    ax2.plot(eval_x, smoothed_b1_auc, color=colors[0])
-    ax2.plot(eval_x, bottom_b1_auc, color=colors[0], alpha=0.5, linestyle='--')
-    ax2.plot(eval_x, top_b1_auc, color=colors[0], alpha=0.5, linestyle='--')
-    ax2.fill_between(eval_x, bottom_b1_auc, top_b1_auc, color=colors[0], alpha=0.25)
-    ax2.plot(eval_x, smoothed_b1_r2, color=colors[0])
-    ax2.plot(eval_x, bottom_b1_r2, color=colors[0], alpha=0.5, linestyle='--')
-    ax2.plot(eval_x, top_b1_r2, color=colors[0], alpha=0.5, linestyle='--')
-    ax2.fill_between(eval_x, bottom_b1_r2, top_b1_r2, color=colors[0], alpha=0.25)
-    ax2.plot(eval_x, smoothed_b1_ew, color=colors[1])
-    ax2.plot(eval_x, bottom_b1_ew, color=colors[1], alpha=0.5, linestyle='--')
-    ax2.plot(eval_x, top_b1_ew, color=colors[1], alpha=0.5, linestyle='--')
-    ax2.fill_between(eval_x, bottom_b1_ew, top_b1_ew, color=colors[1], alpha=0.25)
+    ax2.plot(eval_x, smoothed_b1_f1, color=style_dict['colours'][0])
+    ax2.plot(eval_x, bottom_b1_f1, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax2.plot(eval_x, top_b1_f1, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax2.fill_between(eval_x, bottom_b1_f1, top_b1_f1, color=style_dict['colours'][0], alpha=0.25)
+    ax2.plot(eval_x, smoothed_b1_auc, color=style_dict['colours'][0])
+    ax2.plot(eval_x, bottom_b1_auc, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax2.plot(eval_x, top_b1_auc, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax2.fill_between(eval_x, bottom_b1_auc, top_b1_auc, color=style_dict['colours'][0], alpha=0.25)
+    ax2.plot(eval_x, smoothed_b1_r2, color=style_dict['colours'][0])
+    ax2.plot(eval_x, bottom_b1_r2, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax2.plot(eval_x, top_b1_r2, color=style_dict['colours'][0], alpha=0.5, linestyle='--')
+    ax2.fill_between(eval_x, bottom_b1_r2, top_b1_r2, color=style_dict['colours'][0], alpha=0.25)
+    ax2.plot(eval_x, smoothed_b1_ew, color=style_dict['colours'][1])
+    ax2.plot(eval_x, bottom_b1_ew, color=style_dict['colours'][1], alpha=0.5, linestyle='--')
+    ax2.plot(eval_x, top_b1_ew, color=style_dict['colours'][1], alpha=0.5, linestyle='--')
+    ax2.fill_between(eval_x, bottom_b1_ew, top_b1_ew, color=style_dict['colours'][1], alpha=0.25)
 
     #    sns.regplot(x='b0', y='f1', ax=ax1, data=df_noz, scatter=False, ci=99.9, order=3,
     #                line_kws={'linewidth': 1, 'linestyle':'-'}, color=colors[0])
@@ -163,14 +162,14 @@ def plot_imv_v_altmet(fig_path, data_path, style_dict, fig_name):
     ax2.tick_params(axis='both', which='minor', width=1.25, length=3, labelsize=15)
 
     #make them black
-    ax1.text(1.035, 0.61, 'AUC', fontsize=15, c='k') #c='#3e8abb'
-    ax1.text(1.035, 0.2, 'F1', fontsize=15, c='k') #c='#3e8abb'
-    ax1.text(1.035, 0.05, r'R$^2$', fontsize=15, c='k') #c='#3e8abb'
-    ax1.text(1.035, 0, 'IMV', fontsize=15, c='k') # c='#f46d43'
-    ax2.text(1.035, 0.725, 'AUC', fontsize=15, c='k') #c='#3e8abb'
-    ax2.text(1.035, 0.525, 'F1', fontsize=15, c='k') #c='#3e8abb'
-    ax2.text(1.035, 0.135, r'R$^2$', fontsize=15, c='k') #c='#3e8abb'
-    ax2.text(1.035, 0.215, 'IMV', fontsize=15, c='k') # c='#f46d43'
+    ax1.text(1.035, 0.61, 'AUC', fontsize=15, c=style_dict['colours'][0]) #c='#3e8abb'
+    ax1.text(1.035, 0.2, 'F1', fontsize=15, c=style_dict['colours'][0]) #c='#3e8abb'
+    ax1.text(1.035, 0.05, r'R$^2$', fontsize=15, c=style_dict['colours'][0]) #c='#3e8abb'
+    ax1.text(1.035, 0, 'IMV', fontsize=15, c=style_dict['colours'][1]) # c='#f46d43'
+    ax2.text(1.035, 0.725, 'AUC', fontsize=15, c=style_dict['colours'][0]) #c='#3e8abb'
+    ax2.text(1.035, 0.525, 'F1', fontsize=15, c=style_dict['colours'][0]) #c='#3e8abb'
+    ax2.text(1.035, 0.135, r'R$^2$', fontsize=15, c=style_dict['colours'][0]) #c='#3e8abb'
+    ax2.text(1.035, 0.215, 'IMV', fontsize=15, c=style_dict['colours'][1]) # c='#f46d43'
     at = AnchoredText(
         r"$\beta_2$=0.3", prop=dict(size=15), frameon=True, loc='upper right')
     at.patch.set_boxstyle("round,pad=0.,rounding_size=0.2")
@@ -186,11 +185,11 @@ def plot_imv_v_altmet(fig_path, data_path, style_dict, fig_name):
     ax2.xaxis.grid(linestyle='--', alpha=0.25)
 
     legend_elements = [Line2D([0], [0], markersize=8, marker='s',
-                              markerfacecolor=colors[1],
+                              markerfacecolor=style_dict['colours'][1],
                               markeredgecolor='k',
                               color='w', label=r'IMV', linestyle='-'),
                        Line2D([0], [0], markersize=8, marker='s',
-                              markerfacecolor=colors[0],
+                              markerfacecolor=style_dict['colours'][0],
                               markeredgecolor='k',
                               color='w', label=r'Alternative Metric', linestyle='-'),]
     ax1.legend(handles=legend_elements, loc='upper left', frameon=True,

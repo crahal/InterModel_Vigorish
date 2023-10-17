@@ -48,7 +48,7 @@ def plot_ffc_reeval(eval_df, fig_path, style_dict, fig_name):
     ax2.scatter(x=jobTraining['r2_sub'].astype(float),
                 y=jobTraining['ew_sub_vs_LPM'].astype(float),
                 linewidth=1,linestyle='-',
-                facecolor = style_dict['colours'][0], s=75, alpha=0.75,
+                facecolor = style_dict['colours'][1], s=75, alpha=0.75,
                 edgecolor = 'k'
                 )
 
@@ -61,7 +61,7 @@ def plot_ffc_reeval(eval_df, fig_path, style_dict, fig_name):
                 linewidth=1,linestyle='-',
                 #facecolor = ([232/255, 152/255, 24/255, 0.45]), s=75,
                 #edgecolor = ([232/255, 152/255, 24/255, 1])
-                facecolor = style_dict['colours'][0], s=75, alpha=0.75,
+                facecolor = style_dict['colours'][2], s=75, alpha=0.75,
                 edgecolor = 'k'
                 )
 
@@ -151,7 +151,7 @@ def plot_ffc_reeval(eval_df, fig_path, style_dict, fig_name):
         axx.yaxis.set_major_locator(plt.MaxNLocator(5))
         axx.tick_params(axis='both', which='major', labelsize=17)
         axx.set_ylim(ymin+(ymin/increment), ymax+(ymax/increment))
-        axx.set_xlim(xmin-0.01, xmax+(xmin/increment))
+        axx.set_xlim(xmin-0.005, xmax+(xmin/increment))
 
     sns.despine(trim=True)
     plt.tight_layout(pad=1.5)
