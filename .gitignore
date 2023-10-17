@@ -27,7 +27,7 @@ data/GSS/raw/*
 #### ideas project
 src/.idea/*
 # User-specific stuff
-.idea/*
+.idea/
 
 # AWS User-specific
 .idea/**/aws.xml
@@ -226,3 +226,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/data/football/football_prediction_data.csv
+/data/HRS/.RData
+/data/HRS/.Rhistory
+/example_titanic/.Rhistory
+/src/.Rhistory
+/imv_app/server.R
+/imv_app/ui.R
