@@ -1,7 +1,9 @@
 # Custom
 ./
 data/FFC/*
-
+data/sims/old*
+local_files/*
+src/old/*
 data/HRS/h06da/*
 data/HRS/h06sta/*
 data/HRS/h08da/*
@@ -19,17 +21,13 @@ data/HRS/grip_gait.Rdata
 data/HRS/df.Rdata
 data/HRS/hrs_desc.csv
 
-data/GSS/GSS.csv
+data/GSS/raw/*
 
 
 #### ideas project
-
+src/.idea/*
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+.idea/*
 
 # AWS User-specific
 .idea/**/aws.xml
