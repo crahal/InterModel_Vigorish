@@ -39,4 +39,8 @@ def get_ew(w0, w1):
 
 def get_vw(w0, w1):
     """ calculate the v(w) metric from w0 and w1"""
-    return (np.divide([1 - i for i in w0], w0)**2)*w1+1-w1
+    result = (
+            ((1 - np.array(w0)) / np.array(w0) - get_ew(w0, w1)) ** 2 * w1 +
+            (1 - get_ew(w0, w1)) * (1 - np.array(w1))
+    )
+    return result
