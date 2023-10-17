@@ -3,9 +3,6 @@ library(readr)
 library(Matrix)
 library(stats)
 library(caret)
-GITHUB_URL <- "https://raw.githubusercontent.com/"
-GITHUB_REPO <- "crahal/InterModel_Vigorish/main"
-DATA_FILE_PATH <- "/data/titanic/titanic3.csv"
 set.seed(22092023)
 
 ll<-function(x,p) {
@@ -28,8 +25,7 @@ calculate_imv <- function(y_basic, y_enhanced, y) {
   return((w1 - w0) / w0)}
 
 # Load and preprocess data
-github_data_url <- paste0(GITHUB_URL, GITHUB_REPO, DATA_FILE_PATH)
-titanic <- read.csv(github_data_url)
+titanic <- read.csv('../data/titanic/titanic3.csv')
 titanic$constant <- 1
 titanic$sex <- ifelse(titanic$sex == "female", 1, 0)
 titanic = titanic[sample(1:nrow(titanic)), ]

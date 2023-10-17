@@ -3,9 +3,6 @@ import pandas as pd
 from scipy.optimize import minimize
 from sklearn.model_selection import KFold
 from sklearn.linear_model import LogisticRegression
-GITHUB_URL = "https://raw.githubusercontent.com/"
-GITHUB_REPO = "crahal/InterModel_Vigorish/main"
-DATA_FILE_PATH = "/data/titanic/titanic3.csv"
 
 
 def ll(x, p):
@@ -34,8 +31,7 @@ def calculate_imv(y_basic, y_enhanced, y):
 
 if __name__ == "__main__":
     # Load and preprocess data
-    github_data_url = GITHUB_URL + GITHUB_REPO + DATA_FILE_PATH
-    titanic = pd.read_csv(github_data_url)
+    titanic = pd.read_csv('../data/titanic/titanic3.csv')
     titanic['constant'] = 1
     titanic['sex'] = titanic['sex'].map({'female': 1, 'male': 0})
     titanic = titanic.sample(frac = 1, random_state=22092023)

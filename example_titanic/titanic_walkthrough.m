@@ -1,13 +1,8 @@
 % Set constants
-GITHUB_URL = "https://raw.githubusercontent.com/";
-GITHUB_REPO = "crahal/InterModel_Vigorish/main";
-DATA_FILE_PATH = "/data/titanic/titanic3.csv";
 rng(22092023);
 
 % Load and preprocess data
-github_data_url = GITHUB_URL + GITHUB_REPO + DATA_FILE_PATH;
-options = weboptions('ContentReader', @readtable);
-titanic = webread(github_data_url, options);
+titanic = readtable('../data/titanic/titanic3.csv');
 
 % Preprocessing
 titanic.constant = ones(height(titanic), 1);
