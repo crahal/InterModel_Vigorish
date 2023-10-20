@@ -7,7 +7,8 @@
 [![Generic badge](https://img.shields.io/badge/License-GNU3.0-purple.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Maintained-Yes-brightgreen.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/BuildPassing-No-orange.svg)](https://shields.io/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5054717.svg)](https://doi.org/10.5281/zenodo.5054717)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5054717.svg)](https://doi.org/10.5281/zenodo.10027050)
+
 
 ---
 A repo to introduce the InterModel Vigorish metric. A quick and important note; __ unreserved accreditation for most of the [R](https://www.r-project.org/) code should go  [Ben Domingue](https://github.com/ben-domingue)!__ His repo for this project can be found [here](https://github.com/ben-domingue/binary-prediction). All files for which he is an author begin with an '#Author: github.com/ben-domingue' statement. Shiny app developed by [Klint Kanopka](https://github.com/klintkanopka). A link to the accompanying working paper entitled 'InterModel Vigorish (IMV): A novel approach for quantifying predictive accuracy when outcomes are binary' can be found [here](https://osf.io/preprints/socarxiv/gu3ap/). Abstract copied in here:
