@@ -7,7 +7,7 @@
 [![Generic badge](https://img.shields.io/badge/License-GNU3.0-purple.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Maintained-Yes-brightgreen.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/BuildPassing-No-orange.svg)](https://shields.io/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10027050)](https://doi.org/10.5281/zenodo.10027050)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10027134.svg)](https://doi.org/10.5281/zenodo.10027134)
 
 
 ---
