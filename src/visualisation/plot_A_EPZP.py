@@ -68,4 +68,12 @@ def plot_A_EPZP(fig_path, style_dict, fig_name):
         ax.tick_params(axis='both', labelsize=13)
     plt.subplots_adjust(wspace=2.5, hspace=0.25)
     plt.tight_layout(pad=3)
-    plt.savefig(os.path.join(fig_path, fig_name), bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name + '.eps'), format='eps', dpi=600,
+                bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name + '.tiff'),
+                dpi=600,
+                format="tiff",
+                pil_kwargs={"compression": "tiff_lzw"},
+                bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name + '.pdf'),
+                bbox_inches='tight')

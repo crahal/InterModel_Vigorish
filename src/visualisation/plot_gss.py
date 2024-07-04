@@ -77,4 +77,14 @@ def plot_gss(fig_path, data_path, style_dict, fig_name):
     ax2.yaxis.set_major_locator(plt.MaxNLocator(3))
     ax1.tick_params(axis='both', which='major', labelsize=label_fontsize-2)
     ax2.tick_params(axis='both', which='major', labelsize=label_fontsize-2)
-    plt.savefig(os.path.join(fig_path, fig_name), bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name + '.eps'),
+                format='eps', dpi=600,
+                bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name + '.tiff'),
+                dpi=600,
+                format="tiff",
+                pil_kwargs={"compression": "tiff_lzw"},
+                bbox_inches='tight'
+                )
+    plt.savefig(os.path.join(fig_path, fig_name + '.pdf'),
+                bbox_inches='tight')

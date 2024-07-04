@@ -155,7 +155,17 @@ def plot_ffc_reeval(eval_df, fig_path, style_dict, fig_name):
 
     sns.despine(trim=True)
     plt.tight_layout(pad=1.5)
-    plt.savefig(os.path.join(fig_path, fig_name), bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name + '.eps'),
+                format='eps', dpi=600,
+                bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name + '.tiff'),
+                dpi=600,
+                format="tiff",
+                pil_kwargs={"compression": "tiff_lzw"},
+                bbox_inches='tight'
+                )
+    plt.savefig(os.path.join(fig_path, fig_name + '.pdf'),
+                bbox_inches='tight')
 
 
 def build_df(prob_subm):

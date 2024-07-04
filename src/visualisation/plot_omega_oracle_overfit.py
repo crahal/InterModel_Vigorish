@@ -150,4 +150,14 @@ def plot_omega_oracle_overfit(fig_path, data_path, style_dict, fig_name):
     ax3.annotate(r'$\omega_0$', (omega_0_05['x'][0] - .25, omega_0_05['predict'][0]), fontsize=13)
 
     plt.tight_layout(pad=3.0)
-    plt.savefig(os.path.join(fig_path, fig_name), bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name + '.eps'),
+                format='eps', dpi=600,
+                bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name + '.tiff'),
+                dpi=600,
+                format="tiff",
+                pil_kwargs={"compression": "tiff_lzw"},
+                bbox_inches='tight'
+                )
+    plt.savefig(os.path.join(fig_path, fig_name + '.pdf'),
+                bbox_inches='tight')

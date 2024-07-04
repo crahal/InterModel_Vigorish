@@ -56,4 +56,15 @@ def plot_prev_b0_v_b1(fig_path, data_path, style_dict, fig_name):
     ax1.text(0.4, 3.5, 'R$^2$ = 0.59', fontsize=15, c=style_dict['colours'][1])
 
     plt.tight_layout(pad=3.5)
-    plt.savefig(os.path.join(fig_path, fig_name), bbox_inches='tight')
+
+    plt.savefig(os.path.join(fig_path, fig_name + '.eps'),
+                format='eps', dpi=600,
+                bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name + '.tiff'),
+                dpi=600,
+                format="tiff",
+                pil_kwargs={"compression": "tiff_lzw"},
+                bbox_inches='tight'
+                )
+    plt.savefig(os.path.join(fig_path, fig_name + '.pdf'),
+                bbox_inches='tight')

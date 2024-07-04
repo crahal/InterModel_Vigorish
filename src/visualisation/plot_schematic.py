@@ -123,5 +123,14 @@ def plot_schematic(fig_path, style_dict, fig_name):
     ax1.get_xaxis().set_ticks([])
     ax1.set_ylim(1, 9.25)
     ax1.set_xlim(0, 6.25)
-    plt.savefig(os.path.join(fig_path, fig_name),
+
+    plt.savefig(os.path.join(fig_path, fig_name+ '.eps'),
+                format='eps', dpi=600,
+                bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name+'.tiff'),
+                dpi=600,
+                format="tiff",
+                pil_kwargs={"compression": "tiff_lzw"},
+                bbox_inches='tight')
+    plt.savefig(os.path.join(fig_path, fig_name+'.pdf'),
                 bbox_inches='tight')
